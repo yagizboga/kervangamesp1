@@ -4,37 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float jumpSpeed;
-    [SerializeField] private float fallMultiplier;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
-    private Rigidbody rb;
-    private bool isGrounded;
-    private Vector3 vecGravity;
+    [SerializeField] protected float movementSpeed;
+    [SerializeField] protected float jumpSpeed;
+    [SerializeField] protected float fallMultiplier;
+    [SerializeField] protected Transform groundCheck;
+    [SerializeField] protected LayerMask groundLayer;
+    protected Rigidbody2D rb;
+    protected bool isGrounded;
 
     private void Awake() {
-        vecGravity = new Vector3(0, -Physics2D.gravity.y, 0);
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update() {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-
-        isGrounded = Physics.CheckCapsule(groundCheck.position, groundCheck.position + Vector3.down * 0.1f, 0.5f, groundLayer);
-        rb.velocity = new Vector3(movementSpeed * moveHorizontal, rb.velocity.y, 0);
-        
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, 0);        
-        }
-
-        if (rb.velocity.y < 0)
-        {
-            rb.velocity -= vecGravity * fallMultiplier * Time.deltaTime;
-        }
-
-        
+    protected void CheckGround() {
+        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1, 0.5f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
+
 }
