@@ -40,7 +40,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8381940235260764968}
-  - component: {fileID: 570571283592497273}
   - component: {fileID: 6103450298238991080}
   - component: {fileID: 3306038318273707920}
   - component: {fileID: 6668710179341282256}
@@ -67,25 +66,6 @@ Transform:
   - {fileID: 3178733352925817564}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &570571283592497273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7727319189309117336}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd3ac2ebea2f22646b94199592b7d1b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
-  jumpSpeed: 5
-  fallMultiplier: 2
-  groundCheck: {fileID: 3178733352925817564}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!50 &6103450298238991080
 Rigidbody2D:
   serializedVersion: 4
