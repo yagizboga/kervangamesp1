@@ -5,17 +5,22 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 20f;
-    [SerializeField] private Code code;
-
+    private bool isVerticalShooting = false;
     private Rigidbody2D rb;
     
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start()
+    private void Start()
     {
-        if (code.GetIsVerticalShooting())
+        SetVelocity();
+        StartCoroutine(DestroyBullet());
+    }
+
+    private void SetVelocity()
+    {
+        if (isVerticalShooting)
         {
             rb.velocity = transform.up * bulletSpeed;
         }
@@ -23,6 +28,16 @@ public class Bullet : MonoBehaviour
         {
             rb.velocity = transform.right * bulletSpeed;
         }
-        
+    }
+
+    IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(this.gameObject);     
+    }
+
+    public void SetIsVerticalShooting(bool _isVerticalShooting)
+    {
+        isVerticalShooting = _isVerticalShooting;
     }
 }

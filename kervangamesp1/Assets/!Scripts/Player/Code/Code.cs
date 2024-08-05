@@ -5,22 +5,26 @@ using UnityEngine;
 public class Code : Player
 {   
     [SerializeField] protected GameObject firePoint;
-    [SerializeField] protected GameObject bulletPrefab;
-
-    private bool isVerticalShooting = false;
-    private Transform orginalShootingDir;
+    [SerializeField] protected Bullet bullet;
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
-
-        orginalShootingDir = firePoint.transform;
         
         currentState = new CodeMovingState(this);    
     }
 
     public void Shoot()
     {
-        Instantiate(bulletPrefab, firePoint.transform.position, firePoint.transform.rotation);
+        Bullet tempBullet = Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        if (verticalShootingDir == VerticalShootingDir.Up)
+        {
+            tempBullet.SetIsVerticalShooting(true);
+        }
+        else
+        {
+            tempBullet.SetIsVerticalShooting(false);
+        }
+        
     }
 
     public void ChangeFirePosition()
@@ -28,22 +32,19 @@ public class Code : Player
         switch (verticalShootingDir)
         {
             default:
-                isVerticalShooting = false;
+                // bullet.SetIsVerticalShooting(false);
                 firePoint.transform.localPosition = new Vector3(0.5f, 0, 0);
             break;
             case VerticalShootingDir.Up:
-                isVerticalShooting = true;
+                // bullet.SetIsVerticalShooting(true);
                 firePoint.transform.localPosition = new Vector3(0, 0.5f, 0);
             break;
             case VerticalShootingDir.Down:
-                isVerticalShooting = false;
+                // bullet.SetIsVerticalShooting(false);
                 firePoint.transform.localPosition = new Vector3(0.5f, -0.25f, 0);
             break;
         }
     }
 
-    public bool GetIsVerticalShooting()
-    {
-        return isVerticalShooting;
-    }
+
 }
