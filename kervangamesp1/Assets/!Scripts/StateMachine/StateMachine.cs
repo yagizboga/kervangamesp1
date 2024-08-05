@@ -11,6 +11,11 @@ public class StateMachine : MonoBehaviour
         currentState.OnStateFixedUpdate();    
     }
 
+    void Update() 
+    {
+        currentState.OnStateUpdate();    
+    }
+
     public void ChangeState(State newState)
     {
         currentState.OnStateExit();

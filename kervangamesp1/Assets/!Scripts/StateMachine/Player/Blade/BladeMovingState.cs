@@ -22,6 +22,16 @@ public class BladeMovingState : BladeState
 
     public override void OnStateFixedUpdate()
     {
+        HandleMovement();
+    }
+
+    public override void OnStateUpdate()
+    {
+        
+    }
+
+    private void HandleMovement()
+    {
         blade.CheckGround();
         
         if (blade.isGrounded && Input.GetKey(KeyCode.W))
@@ -43,10 +53,5 @@ public class BladeMovingState : BladeState
         {
             blade.rb.velocity = new Vector2(0, blade.rb.velocity.y);
         }
-    }
-
-    public override void OnStateUpdate()
-    {
-        
     }
 }
