@@ -8,6 +8,10 @@ public class DroneMovement : MonoBehaviour
     public Transform CodeTransform;
     public float DroneSpeed;
     int CharacterChoice;
+    int BulletChoice;
+    public GameObject BlueBullet;
+    public GameObject OrangeBullet;
+    public Transform BulletSpawnTransform;
 
     void Start()
     {
@@ -18,6 +22,8 @@ public class DroneMovement : MonoBehaviour
         else if(CharacterChoice == 2){
             StartCoroutine(TrackPlayer(CodeTransform));
         }
+
+        StartCoroutine(DropBomb());
     }
 
     void Update()
@@ -25,7 +31,19 @@ public class DroneMovement : MonoBehaviour
         
     }
 
-    void DropBomb(){
+    IEnumerator DropBomb(){
+        yield return new WaitForSeconds(6f);
+        while(true){
+            BulletChoice = Random.Range(1,3);
+            if(BulletChoice == 1){
+                Instantiate(BlueBullet,BulletSpawnTransform.position,BulletSpawnTransform.rotation);
+                yield return new WaitForSeconds(6f);
+            }
+            else if(BulletChoice == 2){
+                Instantiate(OrangeBullet,BulletSpawnTransform.position,BulletSpawnTransform.rotation);
+                yield return new WaitForSeconds(6f);
+            }
+        }
 
     }
     IEnumerator TrackPlayer(Transform CharacterTransform){
@@ -38,4 +56,6 @@ public class DroneMovement : MonoBehaviour
         yield return null;
         }
     }
+
+    
 }

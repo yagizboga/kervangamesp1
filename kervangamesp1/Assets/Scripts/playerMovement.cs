@@ -10,10 +10,10 @@ public class playerMovement : MonoBehaviour
     {
         playerRigidBody.velocity = new Vector2(0,0);
         if(Input.GetKey("a")){
-            playerRigidBody.velocity = new Vector2(-3,0);
+            playerRigidBody.velocity = new Vector2(-20,0);
         }
         if(Input.GetKey("d")){
-            playerRigidBody.velocity = new Vector2(3,0);
+            playerRigidBody.velocity = new Vector2(20,0);
         }
     }
 }
