@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
-    private State CurrentState;
+    protected State CurrentState;
 
     public void ChangeState(State NewState){
         if(CurrentState != null){

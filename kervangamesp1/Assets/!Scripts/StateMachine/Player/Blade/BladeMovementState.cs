@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeMovementState : State
+public class BladeMovementState : BladeState
 {
     public Blade blade;
-    private float MoveSpeed = 50f;
+    private float MoveSpeed = 1f;
     Vector3 BladePosition = Vector3.zero;
     
 
-    public BladeMovementState(Blade blade){
+    public BladeMovementState(Blade blade):base(blade){
         this.blade = blade;
     }
 
@@ -43,6 +43,6 @@ public class BladeMovementState : State
             Debug.Log("a");
         }
 
-        blade.transform.position += BladePosition;
+        blade.transform.position += BladePosition*Time.deltaTime;
     }
 }
