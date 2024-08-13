@@ -6,6 +6,8 @@ public class Code : Player
 {   
     [SerializeField] protected GameObject firePoint;
     [SerializeField] protected Bullet bullet;
+    public bool _isHackable = false;
+    public List<GameObject> _hackableProjectilesList;
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
@@ -43,6 +45,28 @@ public class Code : Player
                 // bullet.SetIsVerticalShooting(false);
                 firePoint.transform.localPosition = new Vector3(0.5f, -0.25f, 0);
             break;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            _hackableProjectilesList.Add(other.gameObject);
+            _isHackable = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            foreach (var projectile in _hackableProjectilesList)
+            {
+                if (projectile == other.gameObject)
+                {
+                    _hackableProjectilesList.Remove(projectile);
+                    break;
+                }
+            }
         }
     }
 

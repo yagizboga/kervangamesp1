@@ -30,6 +30,14 @@ public class CodeMovingState : CodeState
         {
             code.ChangeState(new CodeShootingState(code));           
         }
+        Debug.Log(code._isHackable);
+        if (code._isHackable)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                code.ChangeState(new CodeHackState(code));
+            }
+        }
     }
 
     private void HandleMovement()
