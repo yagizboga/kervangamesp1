@@ -36,11 +36,9 @@ public class BladeMovementState : BladeState
     private void HandleMovement(){
         if(Input.GetKey("d")){
             BladePosition.x += MoveSpeed;
-            Debug.Log("d");
         }
         if(Input.GetKey("a")){
             BladePosition.x -= MoveSpeed;
-            Debug.Log("a");
         }
 
         blade.transform.position += BladePosition*Time.deltaTime;

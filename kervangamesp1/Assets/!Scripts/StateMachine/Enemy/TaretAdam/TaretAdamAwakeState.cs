@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.XR;
 
 public class TaretAdamAwakeState : TaretAdamState
 {
     public TaretAdam TaretAdam;
-    bool isTrigger = false;
+    TaretAdamShootingState shootingState;
 
     public TaretAdamAwakeState(TaretAdam TaretAdam):base(TaretAdam){
         this.TaretAdam = TaretAdam;
@@ -14,27 +15,31 @@ public class TaretAdamAwakeState : TaretAdamState
 
     public override void OnStateEnter()
     {
-        
+        taretAdam.rb.velocity = Vector2.zero;
+        shootingState = new TaretAdamShootingState(taretAdam);
     }
 
     public override void OnStateUpdate()
     {
-        if(isTrigger == true){
-            TaretAdam.rb.velocity = new Vector2(0,TaretAdam.RiseSpeed);
-        }
-        if(TaretAdam.transform.position.y == TaretAdam.RiseHeight){
-            TaretAdam.rb.velocity = Vector2.zero;
-        }
     }
 
     public override void OnStateFixedUpdate()
     {
+        if(taretAdam.transform.position.y >= taretAdam.RiseHeight){
+            taretAdam.rb.velocity = Vector2.zero;
+            taretAdam.ChangeState(shootingState);
+        }
+        }
 
-    }
+    
 
     public override void OnStateExit()
     {
 
     }
 
+     public void TriggerRise(float RiseSpeed)
+    {
+        taretAdam.rb.velocity = new Vector2(0, RiseSpeed);
+    }
 }
