@@ -2,24 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaretAdam : StateMachine
+public class HavanTopcusu : StateMachine
 {
-    private TaretAdamAwakeState awakeState;
-    private TaretAdamShootingState shootingState;
+    private HavanTopcusuAwakeState awakeState;
     public Rigidbody2D rb;
-    public float RiseSpeed = 15f;
-    public float RiseHeight = -10f;
-    public Transform BulletPosition1;
-    public Transform BulletPosition2;
-    public Transform BulletPosition3;
+    private HavanTopcusuShootingState shootingState;
+    public Transform BulletPosition;
     public GameObject BlackBullet;
     public GameObject BlueBullet;
     public GameObject OrangeBullet;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
-        awakeState = new TaretAdamAwakeState(this);
-        shootingState = new TaretAdamShootingState(this);
+        awakeState = new HavanTopcusuAwakeState(this);
+        shootingState = new HavanTopcusuShootingState(this);
     }
 
     void Start(){
@@ -30,18 +26,14 @@ public class TaretAdam : StateMachine
         
     }
 
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             if (CurrentState == awakeState)
             {
-                awakeState.TriggerRise(RiseSpeed);          
+                ChangeState(shootingState);
             }
         }
     }
-
-
-
 }

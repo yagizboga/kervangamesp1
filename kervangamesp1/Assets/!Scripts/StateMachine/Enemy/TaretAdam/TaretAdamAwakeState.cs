@@ -42,4 +42,5 @@ public class TaretAdamAwakeState : TaretAdamState
     {
         taretAdam.rb.velocity = new Vector2(0, RiseSpeed);
     }
+
 }

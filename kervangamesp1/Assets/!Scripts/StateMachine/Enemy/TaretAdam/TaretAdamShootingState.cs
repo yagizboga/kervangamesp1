@@ -6,11 +6,11 @@ using UnityEngine;
 public class TaretAdamShootingState : TaretAdamState
 {
     public TaretAdam TaretAdam;
-    TaretAdamBulletSpawner bulletSpawner;
+    EnemyBulletSpawner bulletSpawner;
     int BulletCombinationChoice = 1;
     public TaretAdamShootingState(TaretAdam TaretAdam):base(TaretAdam){
         this.TaretAdam = TaretAdam;
-        bulletSpawner = taretAdam.GetComponent<TaretAdamBulletSpawner>();
+        bulletSpawner = taretAdam.GetComponent<EnemyBulletSpawner>();
     }
 
     public override void OnStateEnter()
@@ -39,11 +39,11 @@ public class TaretAdamShootingState : TaretAdamState
     public IEnumerator Shooting(){
         while(true){
             
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition1);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition3);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2);
-            yield return bulletSpawner.SpawnBullet(taretAdam.OrangeBullet,taretAdam.BulletPosition2);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition1,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition3,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.OrangeBullet,taretAdam.BulletPosition2,1.5f);
         }
     }
 }
