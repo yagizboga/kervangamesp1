@@ -14,7 +14,7 @@ public class TaretAdamBullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player")){
+        if(other.CompareTag("Blade") || other.CompareTag("Code")){
             Debug.Log("Shoot!");
         }
     }

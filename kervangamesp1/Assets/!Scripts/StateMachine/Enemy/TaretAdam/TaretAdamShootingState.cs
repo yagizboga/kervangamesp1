@@ -16,7 +16,7 @@ public class TaretAdamShootingState : TaretAdamState
     public override void OnStateEnter()
     {
         Debug.Log("Shooting State");
-        bulletSpawner.StartShootingCoroutine(Shooting());
+        bulletSpawner.StartEnemyCoroutine(Shooting());
     }
 
     public override void OnStateUpdate()

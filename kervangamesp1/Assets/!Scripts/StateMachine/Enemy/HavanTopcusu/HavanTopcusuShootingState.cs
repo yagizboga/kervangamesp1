@@ -17,7 +17,7 @@ public class HavanTopcusuShootingState : HavanTopcusuState
     public override void OnStateEnter()
     {
         bulletSpawner = havanTopcusu.GetComponent<EnemyBulletSpawner>();
-        bulletSpawner.StartShootingCoroutine(Shooting());
+        bulletSpawner.StartEnemyCoroutine(Shooting());
     }
 
     public override void OnStateUpdate()

@@ -6,9 +6,11 @@ using UnityEngine;
 public class HavanTopcusuBullet : MonoBehaviour
 {
     GameObject Blade;
+    GameObject Code;
     Rigidbody2D rb;
     void Start(){
-        Blade = GameObject.FindGameObjectWithTag("Player");
+        Blade = GameObject.FindGameObjectWithTag("Blade");
+        Code = GameObject.FindGameObjectWithTag("Code");
         rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(0,10),ForceMode2D.Impulse);
         
@@ -20,7 +22,7 @@ public class HavanTopcusuBullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Player") || other.CompareTag("Ground"))
+        if(other.CompareTag("Blade") || other.CompareTag("Ground") || other.CompareTag("Code"))
         {
             Destroy(gameObject);
         }

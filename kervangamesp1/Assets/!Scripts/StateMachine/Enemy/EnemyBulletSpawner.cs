@@ -9,7 +9,7 @@ public class EnemyBulletSpawner : MonoBehaviour
         yield return new WaitForSeconds(waitseconds);
    }
 
-    public void StartShootingCoroutine(IEnumerator coroutine)
+    public void StartEnemyCoroutine(IEnumerator coroutine)
     {
         StartCoroutine(coroutine);
     }

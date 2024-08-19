@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 6131199166703786579}
   - component: {fileID: 5556322436304004995}
   - component: {fileID: 3715411911905976723}
-  - component: {fileID: 5653850016794686992}
   m_Layer: 0
-  m_Name: Capsule
-  m_TagString: Untagged
+  m_Name: Blade
+  m_TagString: Blade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 2188781860365418996}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -78.1, y: -15.8, z: 0}
-  m_LocalScale: {x: 15.69, y: 15.69, z: 15.69}
+  m_LocalPosition: {x: -87.1, y: -32.8, z: 0}
+  m_LocalScale: {x: 13.553021, y: 15.69, z: 15.69}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -163,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a404d3f3aabec4180ad8831264c889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
 --- !u!114 &3715411911905976723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,16 +175,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8908ec18fb513f341bd81b6b80b8fa64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5653850016794686992
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2188781860365418996}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5df8d63bccf5e409a0bb428b2b2f4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blade: {fileID: 5556322436304004995}

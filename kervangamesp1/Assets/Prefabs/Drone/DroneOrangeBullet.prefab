@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 442894040342363008}
   - component: {fileID: 4051541004907869676}
   m_Layer: 0
-  m_Name: OrangeBullet
+  m_Name: DroneOrangeBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
