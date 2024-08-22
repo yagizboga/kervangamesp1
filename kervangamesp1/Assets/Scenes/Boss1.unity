@@ -518,8 +518,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1467227031}
   - {fileID: 449086206}
+  - {fileID: 1467227031}
   - {fileID: 1200802809}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -548,6 +548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "G\xFCvenlikSefiHealth": 100
+  "G\xFCvenlikSefiSword": {fileID: 1467227033}
+  "G\xFCvenlikSefiShield": {fileID: 1200802811}
 --- !u!1 &1180365088
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,6 +788,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "G\xFCvenlikSefiHealth": 100
+  "G\xFCvenlikSefiSword": {fileID: 0}
+  "G\xFCvenlikSefiShield": {fileID: 0}
 --- !u!1 &1467227030
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,6 +934,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "G\xFCvenlikSefiHealth": 100
+  "G\xFCvenlikSefiSword": {fileID: 0}
+  "G\xFCvenlikSefiShield": {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
