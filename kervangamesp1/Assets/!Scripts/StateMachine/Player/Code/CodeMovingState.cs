@@ -37,6 +37,13 @@ public class CodeMovingState : CodeState
             {
                 code.ChangeState(new CodeHackState(code));
             }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                code.ChangeState(new CodeDeactivateBarrierState(code));
+            }
+
+            
         }
     }
 

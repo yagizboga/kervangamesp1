@@ -8,6 +8,7 @@ public class Code : Player
     [SerializeField] protected Bullet bullet;
     public bool _isHackable = false;
     public List<GameObject> _hackableProjectilesList;
+    public List<GameObject> _barrierList;
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
@@ -54,19 +55,22 @@ public class Code : Player
             _hackableProjectilesList.Add(other.gameObject);
             _isHackable = true;
         }
+        if (other.gameObject.CompareTag("Barrier"))
+        {
+            Debug.Log("sa");
+            _barrierList.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.CompareTag("Projectile"))
         {
-            foreach (var projectile in _hackableProjectilesList)
-            {
-                if (projectile == other.gameObject)
-                {
-                    _hackableProjectilesList.Remove(projectile);
-                    break;
-                }
-            }
+            _hackableProjectilesList.Remove(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Barrier"))
+        {
+            _barrierList.Remove(other.gameObject);
         }
     }
 

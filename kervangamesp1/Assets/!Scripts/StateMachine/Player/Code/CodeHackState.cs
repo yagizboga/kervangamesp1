@@ -12,14 +12,12 @@ public class CodeHackState : CodeState
 
     public override void OnStateEnter()
     {
-        Debug.Log("Entered the code hack state");
         _projectileRb = GetNearesProjectileObject().GetComponent<Rigidbody2D>();
         _projectileRb.GetComponent<TempProjectile>()._isHacked = true;
     }
 
     public override void OnStateExit()
     {
-        Debug.Log("Exiting the code hack state");
         _projectileRb.GetComponent<TempProjectile>()._isHacked = false;
     }
 
