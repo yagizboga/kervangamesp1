@@ -9,6 +9,7 @@ public enum VerticalShootingDir
 
 public class Player : StateMachine, IDamagable
 {
+    public int health;
     public float movementSpeed;
     public float jumpSpeed;
     public float fallMultiplier;

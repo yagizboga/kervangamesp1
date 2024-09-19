@@ -30,7 +30,6 @@ public class CodeMovingState : CodeState
         {
             code.ChangeState(new CodeShootingState(code));           
         }
-        Debug.Log(code._isHackable);
         if (code._isHackable)
         {
             if (Input.GetKeyDown(KeyCode.E))
@@ -42,6 +41,12 @@ public class CodeMovingState : CodeState
             {
                 code.ChangeState(new CodeDeactivateBarrierState(code));
             }
+
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                code.ChangeState(new CodeStunState(code));
+            }
+            
 
             
         }

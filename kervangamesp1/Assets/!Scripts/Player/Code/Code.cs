@@ -9,6 +9,7 @@ public class Code : Player
     public bool _isHackable = false;
     public List<GameObject> _hackableProjectilesList;
     public List<GameObject> _barrierList;
+    public List<GameObject> _stunEnemyList;
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,8 +58,12 @@ public class Code : Player
         }
         if (other.gameObject.CompareTag("Barrier"))
         {
-            Debug.Log("sa");
             _barrierList.Add(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Stunnable"))
+        {
+            _stunEnemyList.Add(other.gameObject);
         }
     }
 
@@ -71,6 +76,10 @@ public class Code : Player
         if (other.gameObject.CompareTag("Barrier"))
         {
             _barrierList.Remove(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("Stunnable"))
+        {
+            _stunEnemyList.Remove(other.gameObject);
         }
     }
 

@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CameraFollowPlayer : MonoBehaviour
 {
-    [SerializeField] private GameObject _code;
-    [SerializeField] private GameObject _blade;
+    [SerializeField] private Transform _code;
+    [SerializeField] private Transform _blade;
 
     CinemachineVirtualCamera virtualCamera;
 
@@ -27,8 +27,9 @@ public class CameraFollowPlayer : MonoBehaviour
         }
     }
 
-    private void FollowPlayer(GameObject player)
+    private void FollowPlayer(Transform player)
     {
-        virtualCamera.Follow = player.transform;
+        player.rotation = Quaternion.Euler(0, 0, 0);
+        virtualCamera.Follow = player;
     }
 }
