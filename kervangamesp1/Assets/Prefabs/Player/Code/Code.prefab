@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1189216711073674009}
   m_Layer: 0
   m_Name: Code
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,7 @@ Transform:
   m_Children:
   - {fileID: 8882357024711284013}
   - {fileID: 1468777362712482852}
+  - {fileID: 7657635115296579714}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7484005508097870594
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ace1f0d5e428504fb177426acdce819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   movementSpeed: 5
   jumpSpeed: 5
   fallMultiplier: 2
@@ -58,8 +60,15 @@ MonoBehaviour:
     m_Bits: 64
   rb: {fileID: 0}
   isGrounded: 0
-  playerDirection: 1
-  playerLastDirection: 2
+  isFacingRight: 1
+  verticalShootingDir: 0
+  isAlive: 1
+  firePoint: {fileID: 8833866702982480443}
+  bullet: {fileID: 8611579859721464829, guid: cf6c1d1c5c9da2a40b0fab554444f6b2, type: 3}
+  _isHackable: 0
+  _hackableProjectilesList: []
+  _barrierList: []
+  _stunEnemyList: []
 --- !u!212 &8786109611839021791
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -185,7 +194,7 @@ GameObject:
   - component: {fileID: 8882357024711284013}
   m_Layer: 0
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -205,6 +214,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5468413111768305224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7986138566579100275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7657635115296579714}
+  - component: {fileID: 1145004658918023462}
+  m_Layer: 0
+  m_Name: EnemyTrigger
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7657635115296579714
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986138566579100275}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5468413111768305224}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1145004658918023462
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7986138566579100275}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 10
 --- !u!1 &8833866702982480443
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +292,7 @@ GameObject:
   - component: {fileID: 1468777362712482852}
   m_Layer: 0
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 8833866702982480443}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

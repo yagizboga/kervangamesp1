@@ -20,6 +20,8 @@ public class Player : StateMachine, IDamagable
     public bool isGrounded;
     public bool isFacingRight = true;
     public VerticalShootingDir verticalShootingDir;
+    
+    public bool isAlive = true;
 
     public void CheckGround() {
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1, 0.5f), CapsuleDirection2D.Horizontal, 0, groundLayer);
@@ -27,7 +29,16 @@ public class Player : StateMachine, IDamagable
     
     public void TakeDamage(float damage)
     {
+        if (isAlive)
+        {
+            StartCoroutine(SlowDownTime());
+            health--;
 
+            if (health <= 0)
+            {
+                isAlive = false;
+            }
+        }
     }
 
     public void Flip()
@@ -35,5 +46,12 @@ public class Player : StateMachine, IDamagable
         isFacingRight = !isFacingRight;
 
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    private IEnumerator SlowDownTime()
+    {
+        Time.timeScale = 0.5f;
+        yield return new WaitForSecondsRealtime(1f);
+        Time.timeScale = 1f;
     }
 }

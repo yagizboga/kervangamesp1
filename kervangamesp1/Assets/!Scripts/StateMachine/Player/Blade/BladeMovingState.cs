@@ -35,6 +35,11 @@ public class BladeMovingState : BladeState
         {
             blade.ChangeState(new BladeExecutionState(blade));
         }
+        if (Input.GetKeyUp(KeyCode.U))
+        {
+            blade.ChangeState(new BladeUltimateState(blade));
+        }
+
     }
 
     private void HandleMovement()

@@ -12,8 +12,8 @@ public class Code : Player
     public List<GameObject> _stunEnemyList;
     private void Awake() 
     {
+        health = 3;
         rb = GetComponent<Rigidbody2D>();
-        
         currentState = new CodeMovingState(this);    
     }
 
