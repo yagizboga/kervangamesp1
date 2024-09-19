@@ -35,8 +35,14 @@ public class BladeMovingState : BladeState
         {
             blade.ChangeState(new BladeExecutionState(blade));
         }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            blade._virtualCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+            blade._virtualCamera.Priority = 15;
+        }
         if (Input.GetKeyUp(KeyCode.U))
         {
+            blade._virtualCamera.Priority = 1;
             blade.ChangeState(new BladeUltimateState(blade));
         }
 

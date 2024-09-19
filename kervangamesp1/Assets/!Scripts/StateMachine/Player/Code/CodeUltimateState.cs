@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CodeUltimateState : MonoBehaviour
+public class CodeUltimateState : CodeState
 {
-    // Start is called before the first frame update
-    void Start()
+    public CodeUltimateState(Code code) : base(code)
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnStateEnter()
     {
-        
+        code.ChangeState(new CodeMovingState(code));
+    }
+
+    public override void OnStateExit()
+    {
+
+    }
+
+    public override void OnStateFixedUpdate()
+    {
+
+    }
+
+    public override void OnStateUpdate()
+    {
+
     }
 }

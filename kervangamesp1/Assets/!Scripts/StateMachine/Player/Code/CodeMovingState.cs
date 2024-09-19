@@ -46,6 +46,17 @@ public class CodeMovingState : CodeState
             {
                 code.ChangeState(new CodeStunState(code));
             }
+
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                code._virtualCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+                code._virtualCamera.Priority = 15;
+            }
+            if (Input.GetKeyUp(KeyCode.O))
+            {
+                code._virtualCamera.Priority = 1;
+                code.ChangeState(new CodeUltimateState(code));
+            }
             
 
             

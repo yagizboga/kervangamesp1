@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public enum VerticalShootingDir
@@ -22,6 +23,7 @@ public class Player : StateMachine, IDamagable
     public VerticalShootingDir verticalShootingDir;
     
     public bool isAlive = true;
+    public CinemachineVirtualCamera _virtualCamera;
 
     public void CheckGround() {
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1, 0.5f), CapsuleDirection2D.Horizontal, 0, groundLayer);
