@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeState : State
+public class EnemyState : State
 {
-    protected Blade blade;
-    public BladeState(Blade blade)
+    public EnemyState()
     {
-        this.blade = blade;
+
     }
 
     public virtual void OnStateEnter()

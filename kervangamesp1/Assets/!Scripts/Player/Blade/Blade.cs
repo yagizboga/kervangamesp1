@@ -1,26 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.SceneManagement;
+using Cinemachine;
 using UnityEngine;
 
-public class Blade : StateMachine
+public class Blade : Player
 {
-    private BladeMovementState movementState;
-    public Rigidbody2D rb;
+    public int executionPoint = 0;
+    public int maxExecutionPoint = 5;
 
-    private void Awake(){
+    public Transform attackPoint;
+    public float attackRange = 1f;
+    public LayerMask enemyLayers;
+    public List<GameObject> enemiesList;
+    public GameObject bossEnemy;
+    public CinemachineVirtualCamera bossCamera;
+
+    public bool isRageMode = false;
+
+    private void Awake() 
+    {
+        health = 3;
         rb = GetComponent<Rigidbody2D>();
-        movementState = new BladeMovementState(this);
+        currentState = new BladeMovingState(this);    
     }
 
-    void Start(){
-        ChangeState(movementState);
+    public void ChangeAttackPoint()
+    {
+        switch (verticalShootingDir)
+        {
+            default:
+                // bullet.SetIsVerticalShooting(false);
+                attackPoint.transform.localPosition = new Vector3(1.0f, 0.5f, 0);
+            break;
+            case VerticalShootingDir.Up:
+                // bullet.SetIsVerticalShooting(true);
+                attackPoint.transform.localPosition = new Vector3(0, 1.5f, 0);
+            break;
+            case VerticalShootingDir.Down:
+                // bullet.SetIsVerticalShooting(false);
+                attackPoint.transform.localPosition = new Vector3(1.0f, -0.5f, 0);
+            break;
+        }
     }
 
-    void TakeDamage(float damage){
+    private void OnTriggerEnter2D(Collider2D other) 
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            enemiesList.Add(other.gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            bossEnemy = other.gameObject;
+        }
         
     }
 
-    
+    private void OnTriggerExit2D(Collider2D other) 
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            enemiesList.Remove(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            bossEnemy = null;
+        }
+    }
 }
