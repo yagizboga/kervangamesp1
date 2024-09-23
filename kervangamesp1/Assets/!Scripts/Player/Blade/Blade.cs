@@ -21,7 +21,7 @@ public class Blade : Player
     {
         health = 3;
         rb = GetComponent<Rigidbody2D>();
-        currentState = new BladeMovingState(this);    
+        CurrentState = new BladeMovingState(this);    
     }
 
     public void ChangeAttackPoint()

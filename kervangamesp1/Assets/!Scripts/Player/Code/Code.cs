@@ -15,7 +15,7 @@ public class Code : Player
     {
         health = 3;
         rb = GetComponent<Rigidbody2D>();
-        currentState = new CodeMovingState(this);    
+        CurrentState = new CodeMovingState(this);    
     }
 
     public void Shoot()
