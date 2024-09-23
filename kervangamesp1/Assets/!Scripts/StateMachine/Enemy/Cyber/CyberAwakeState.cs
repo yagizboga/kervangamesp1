@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DroneAwakeState : DroneState
+public class CyberAwakeState : CyberState
 {
-    Drone Drone;
-    public DroneAwakeState(Drone Drone):base(Drone){
-        this.Drone = Drone;
-    }
+    Cyber Cyber;
 
+    public CyberAwakeState(Cyber Cyber):base(Cyber){
+        this.Cyber = Cyber;
+    }
     public override void OnStateEnter(){
     }
     public override void OnStateUpdate(){}

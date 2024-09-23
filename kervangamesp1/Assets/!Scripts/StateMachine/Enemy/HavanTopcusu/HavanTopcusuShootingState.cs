@@ -38,19 +38,19 @@ public class HavanTopcusuShootingState : HavanTopcusuState
         BulletOrder = Random.Range(1,4);
         while(true){
             if(BulletOrder == 1){
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition,1.5f);
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition,1.5f);
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlueBullet,havanTopcusu.BulletPosition,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlueBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
             }
             else if(BulletOrder == 2){
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition,1.5f);
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlueBullet,havanTopcusu.BulletPosition,1.5f);
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlueBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
             }
             else if(BulletOrder == 3){
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlueBullet,havanTopcusu.BulletPosition,1.5f);
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition,1.5f);
-                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlueBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
+                yield return bulletSpawner.SpawnBullet(havanTopcusu.BlackBullet,havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,1.5f);
             }
         }
     }

@@ -11,7 +11,8 @@ public class GüvenlikSefiAwakeState : GüvenlikSefiState
     public override void OnStateEnter(){
         Debug.Log("awake");
     }
-    public override void OnStateUpdate(){}
+    public override void OnStateUpdate(){
+    }
     public override void OnStateFixedUpdate(){}
     public override void OnStateExit(){}
 }

@@ -33,10 +33,10 @@ public class DroneShootingState : DroneState
         while(true){
             BulletChoice = Random.Range(1,3);
             if(BulletChoice == 1){
-                yield return BulletSpawner.SpawnBullet(drone.BlueBullet,drone.BulletSpawnTransform,6f);
+                yield return BulletSpawner.SpawnBullet(drone.BlueBullet,drone.BulletSpawnTransform.position,drone.BulletSpawnTransform.rotation,6f);
             }
             else if(BulletChoice == 2){
-                yield return BulletSpawner.SpawnBullet(drone.OrangeBullet,drone.BulletSpawnTransform,6f);
+                yield return BulletSpawner.SpawnBullet(drone.OrangeBullet,drone.BulletSpawnTransform.position,drone.BulletSpawnTransform.rotation,6f);
             }
         }
 

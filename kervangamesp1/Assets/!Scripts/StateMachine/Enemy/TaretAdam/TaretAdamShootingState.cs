@@ -39,11 +39,11 @@ public class TaretAdamShootingState : TaretAdamState
     public IEnumerator Shooting(){
         while(true){
             
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition1,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition3,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.OrangeBullet,taretAdam.BulletPosition2,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition1.position,taretAdam.BulletPosition1.rotation,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition3.position,taretAdam.BulletPosition3.rotation,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition2.rotation,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition2.rotation,1.5f);
+            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition2.rotation,1.5f);
         }
     }
 }
