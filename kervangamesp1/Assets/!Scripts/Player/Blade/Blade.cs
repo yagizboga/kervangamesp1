@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class Blade : Player
@@ -11,6 +12,8 @@ public class Blade : Player
     public float attackRange = 1f;
     public LayerMask enemyLayers;
     public List<GameObject> enemiesList;
+    public GameObject bossEnemy;
+    public CinemachineVirtualCamera bossCamera;
 
     public bool isRageMode = false;
 
@@ -46,6 +49,12 @@ public class Blade : Player
         {
             enemiesList.Add(other.gameObject);
         }
+        
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            bossEnemy = other.gameObject;
+        }
+        
     }
 
     private void OnTriggerExit2D(Collider2D other) 
@@ -53,6 +62,11 @@ public class Blade : Player
         if (other.gameObject.CompareTag("Enemy"))
         {
             enemiesList.Remove(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            bossEnemy = null;
         }
     }
 }
