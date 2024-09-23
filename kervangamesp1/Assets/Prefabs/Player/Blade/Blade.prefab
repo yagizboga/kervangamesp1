@@ -154,20 +154,23 @@ MonoBehaviour:
   groundCheck: {fileID: 3178733352925817564}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   rb: {fileID: 0}
   isGrounded: 0
   isFacingRight: 1
   verticalShootingDir: 0
   isAlive: 1
+  _virtualCamera: {fileID: 0}
   executionPoint: 0
   maxExecutionPoint: 5
   attackPoint: {fileID: 211362453555470665}
   attackRange: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   enemiesList: []
+  bossEnemy: {fileID: 0}
+  bossCamera: {fileID: 0}
   isRageMode: 0
 --- !u!50 &6103450298238991080
 Rigidbody2D:

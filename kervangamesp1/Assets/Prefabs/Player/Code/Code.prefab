@@ -57,18 +57,20 @@ MonoBehaviour:
   groundCheck: {fileID: 8882357024711284013}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   rb: {fileID: 0}
   isGrounded: 0
   isFacingRight: 1
   verticalShootingDir: 0
   isAlive: 1
+  _virtualCamera: {fileID: 0}
   firePoint: {fileID: 8833866702982480443}
   bullet: {fileID: 8611579859721464829, guid: cf6c1d1c5c9da2a40b0fab554444f6b2, type: 3}
   _isHackable: 0
   _hackableProjectilesList: []
   _barrierList: []
   _stunEnemyList: []
+  _ultimateEnemyList: []
 --- !u!212 &8786109611839021791
 SpriteRenderer:
   m_ObjectHideFlags: 0
