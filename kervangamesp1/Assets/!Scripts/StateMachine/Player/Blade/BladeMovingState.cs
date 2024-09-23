@@ -33,9 +33,6 @@ public class BladeMovingState : BladeState
         }
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (!blade.bossEnemy) return;
-            blade.bossCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
-            blade.bossCamera.Priority = 15;
             blade.ChangeState(new BladeExecutionState(blade));
         }
         if (Input.GetKeyDown(KeyCode.U))

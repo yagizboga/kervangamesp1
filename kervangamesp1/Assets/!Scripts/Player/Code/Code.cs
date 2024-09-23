@@ -10,7 +10,6 @@ public class Code : Player
     public List<GameObject> _hackableProjectilesList;
     public List<GameObject> _barrierList;
     public List<GameObject> _stunEnemyList;
-    public List<GameObject> _ultimateEnemyList;
     private void Awake() 
     {
         health = 3;
@@ -57,7 +56,6 @@ public class Code : Player
             _hackableProjectilesList.Add(other.gameObject);
             _isHackable = true;
         }
-
         if (other.gameObject.CompareTag("Barrier"))
         {
             _barrierList.Add(other.gameObject);
@@ -67,12 +65,6 @@ public class Code : Player
         {
             _stunEnemyList.Add(other.gameObject);
         }
-
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            _ultimateEnemyList.Add(other.gameObject);
-        }
-
     }
 
     private void OnTriggerExit2D(Collider2D other) {
@@ -85,15 +77,9 @@ public class Code : Player
         {
             _barrierList.Remove(other.gameObject);
         }
-
         if (other.gameObject.CompareTag("Stunnable"))
         {
             _stunEnemyList.Remove(other.gameObject);
-        }
-
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            _ultimateEnemyList.Remove(other.gameObject);
         }
     }
 
