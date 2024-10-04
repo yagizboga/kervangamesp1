@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class Cyber : StateMachine
@@ -19,7 +21,7 @@ public class Cyber : StateMachine
     public GameObject ForeArm;
     public GameObject Body;
     public LineRenderer TrackingLaser;
-    public Transform CodeTransform;
+    public  Transform CodeTransform;
     public Transform BladeTransform;
     public bool IsLaserFire;
     public GameObject CyberP1ProjectilePosition1;
@@ -34,6 +36,9 @@ public class Cyber : StateMachine
     public GameObject CyberP1LaserPosition4;
     public GameObject CyberP1LaserPosition5;
 
+    public CyberCoroutine cyberCoroutine;
+    public bool CyberNearAreaBool = false;
+
 
     void Awake(){
         AwakeState = new CyberAwakeState(this);
@@ -42,13 +47,38 @@ public class Cyber : StateMachine
         P1TrackingLaserState = new CyberP1TrackingLaserState(this);
         P1ProjectileAttackState = new CyberP1ProjectileAttackState(this);
         TrackingLaser = gameObject.GetComponent<LineRenderer>();
+        CodeTransform = GameObject.FindGameObjectWithTag("Code").transform;
+        BladeTransform = GameObject.FindGameObjectWithTag("Blade").transform;
+        cyberCoroutine = gameObject.AddComponent<CyberCoroutine>();
     }
     void Start(){
-        ChangeState(P1TrackingLaserState);
+        cyberCoroutine.StartCyberCoroutine(P1StateChanges());
+        
+    }
+    void Update(){
+        if(CyberNearAreaBool){
+            ChangeState(P1ProjectileAttackState);
+            CyberNearAreaBool = false;
+        }
     }
 
-    public void OnTriggerEnter(Collider other){
-        Debug.Log("Collision");
-        
+
+
+
+
+    IEnumerator P1StateChanges(){
+        while(true){
+            ChangeState(P1LaserState);
+            yield return new WaitForSeconds(5f);
+            ChangeState(P1TrackingLaserState);
+            yield return new WaitForSeconds(5f);
+        }
+    }
+}
+
+
+public class CyberCoroutine:MonoBehaviour{
+    public void StartCyberCoroutine(IEnumerator a){
+        StartCoroutine(a);
     }
 }

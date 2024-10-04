@@ -9,9 +9,9 @@ public class CyberP1TrackingLaserState : CyberState
     Cyber Cyber;
     Transform LaserStart;
     Transform LaserEnd;
-    float LaserExpandSpeed = 3f;
+    float LaserExpandSpeed = 0.4f;
     float CurrentWidth = 0.1f;
-    float MaxWidth = 10f;
+    float MaxWidth = 1f;
 
 
     MeshCollider collider;
@@ -22,6 +22,7 @@ public class CyberP1TrackingLaserState : CyberState
     }
 
     public override void OnStateEnter(){
+        cyber.TrackingLaser.enabled = true;
 
         collider = cyber.GetComponent<MeshCollider>();
 
@@ -71,22 +72,19 @@ public class CyberP1TrackingLaserState : CyberState
             }
         }
 
-        GenerateMeshCollider();
         
     }
     public override void OnStateFixedUpdate(){}
-    public override void OnStateExit(){}
+    public override void OnStateExit(){
+        cyber.TrackingLaser.enabled = false;
+    }
 
     void FireLaser(){
         Debug.Log("Laser!");
         cyber.IsLaserFire = true;
     }
 
-    void GenerateMeshCollider(){
-        Mesh mesh = new Mesh();
-        cyber.TrackingLaser.BakeMesh(mesh,true);
-        collider.sharedMesh = mesh;
-    }
+
 
     
     
