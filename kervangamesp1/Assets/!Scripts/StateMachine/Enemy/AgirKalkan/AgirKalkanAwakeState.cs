@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgirKalkanAwakeState : MonoBehaviour
+public class AgirKalkanAwakeState : AgirKalkanState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public AgirKalkan AgirKalkan;
+    public AgirKalkanAwakeState(AgirKalkan AgirKalkan):base(AgirKalkan){
+        this.AgirKalkan = AgirKalkan;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public override void OnStateEnter(){}
+    public override void OnStateUpdate(){}
+    public override void OnStateFixedUpdate(){}
+    public override void OnStateExit(){}
 }

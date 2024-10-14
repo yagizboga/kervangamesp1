@@ -35,6 +35,7 @@ public class Drone : StateMachine
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log(other.tag);
         if (other.CompareTag("Blade") || other.CompareTag("Code"))
         {
             if (CurrentState == awakeState)
