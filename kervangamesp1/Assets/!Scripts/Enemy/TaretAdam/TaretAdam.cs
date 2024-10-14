@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TaretAdam : StateMachine
+public class TaretAdam : StateMachine, IDamagable
 {
     private TaretAdamAwakeState awakeState;
     private TaretAdamShootingState shootingState;

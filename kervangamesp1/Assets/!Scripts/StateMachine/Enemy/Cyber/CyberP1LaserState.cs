@@ -22,7 +22,9 @@ public class CyberP1LaserState : CyberState
     public override void OnStateUpdate(){
     }
     public override void OnStateFixedUpdate(){}
-    public override void OnStateExit(){}
+    public override void OnStateExit(){
+        BulletSpawner.StopAllCoroutines();
+    }
 
     public IEnumerator ShootLaser(){
         while(true){

@@ -12,6 +12,9 @@ public class CyberP1TrackingLaserState : CyberState
     float LaserExpandSpeed = 0.4f;
     float CurrentWidth = 0.1f;
     float MaxWidth = 1f;
+    Vector2 LaserDirection;
+    float LaserDistance;
+    RaycastHit2D hit;
 
 
     MeshCollider collider;
@@ -22,13 +25,13 @@ public class CyberP1TrackingLaserState : CyberState
     }
 
     public override void OnStateEnter(){
-        cyber.TrackingLaser.enabled = true;
-
-        collider = cyber.GetComponent<MeshCollider>();
-
-        if(collider == null){
-            collider = cyber.AddComponent<MeshCollider>();
+        if(cyber.TrackingLaser == null){
+            cyber.TrackingLaser = cyber.gameObject.AddComponent<LineRenderer>();
         }
+        if(cyber.TrackingLaser != null){
+            cyber.TrackingLaser.enabled = true;
+        }
+        
 
         LaserStart = cyber.Body.transform;
         LaserEnd = Random.Range(0,2) == 0? cyber.CodeTransform:cyber.BladeTransform;
@@ -46,34 +49,34 @@ public class CyberP1TrackingLaserState : CyberState
         if(LaserEnd != null){
             cyber.TrackingLaser.SetPosition(1,LaserEnd.position);
         }
-
-
-
-
-
     }
     public override void OnStateUpdate(){
-
-        if(CurrentWidth < MaxWidth){
+        Debug.Log("update");
+        if(cyber.TrackingLaser!=null){
+            if(CurrentWidth < MaxWidth){
             CurrentWidth += LaserExpandSpeed * Time.deltaTime;
             cyber.TrackingLaser.endWidth = CurrentWidth;
             cyber.IsLaserFire = false;
-        }
-        else if(CurrentWidth >=MaxWidth){
-            FireLaser();
-            LaserEnd = Random.Range(0,2) == 0? cyber.CodeTransform:cyber.BladeTransform;
-            CurrentWidth = 0.1f;
-
-            if(LaserStart !=null){
-            cyber.TrackingLaser.SetPosition(0,LaserStart.position);
             }
-            if(LaserEnd != null){
-                cyber.TrackingLaser.SetPosition(1,LaserEnd.position);
+            else if(CurrentWidth >=MaxWidth){
+                FireLaser();
+                LaserEnd = Random.Range(0,2) == 0? cyber.CodeTransform:cyber.BladeTransform;
+                CurrentWidth = 0.1f;
+
+                if(LaserStart !=null){
+                cyber.TrackingLaser.SetPosition(0,LaserStart.position);
+                }
+                if(LaserEnd != null){
+                    cyber.TrackingLaser.SetPosition(1,LaserEnd.position);
+                }
             }
         }
 
         
-    }
+
+        LaserDirection = (LaserEnd.position - LaserStart.position).normalized;
+        LaserDistance = Vector2.Distance(LaserStart.position, LaserEnd.position);
+        }
     public override void OnStateFixedUpdate(){}
     public override void OnStateExit(){
         cyber.TrackingLaser.enabled = false;
@@ -81,11 +84,13 @@ public class CyberP1TrackingLaserState : CyberState
 
     void FireLaser(){
         Debug.Log("Laser!");
+        hit = Physics2D.Raycast(LaserStart.position,LaserDirection,LaserDistance);
+            if(hit.collider.CompareTag("Blade")){
+                Debug.Log("Blade got shot");
+            }
+            if(hit.collider.CompareTag("Code")){
+                Debug.Log("Code got shot");
+            }
         cyber.IsLaserFire = true;
     }
-
-
-
-    
-    
 }

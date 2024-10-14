@@ -8,7 +8,6 @@ public class Cyber : StateMachine
 {
 
     CyberAwakeState AwakeState;
-    CyberP3ArmAttackState P3ArmAttackState;
     CyberP1LaserState P1LaserState;
     CyberP1TrackingLaserState P1TrackingLaserState;
     CyberP1ProjectileAttackState P1ProjectileAttackState;
@@ -42,7 +41,6 @@ public class Cyber : StateMachine
 
     void Awake(){
         AwakeState = new CyberAwakeState(this);
-        P3ArmAttackState = new CyberP3ArmAttackState(this);
         P1LaserState = new CyberP1LaserState(this);
         P1TrackingLaserState = new CyberP1TrackingLaserState(this);
         P1ProjectileAttackState = new CyberP1ProjectileAttackState(this);
