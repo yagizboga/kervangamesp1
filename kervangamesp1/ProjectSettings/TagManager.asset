@@ -9,6 +9,9 @@ TagManager:
   - Code
   - Cyber
   - AgirKalkan
+  - BlackBullet
+  - BlueBullet
+  - OrangeBullet
   layers:
   - Default
   - TransparentFX

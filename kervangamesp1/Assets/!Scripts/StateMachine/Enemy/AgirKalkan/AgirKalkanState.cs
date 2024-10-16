@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AgirKalkanState : State
 {
-    public AgirKalkan agirKalkan;
-    AgirKalkanState(AgirKalkan agirKalkan){
+    protected AgirKalkan agirKalkan;
+    public AgirKalkanState(AgirKalkan agirKalkan){
         this.agirKalkan = agirKalkan;
     }
     public virtual void OnStateEnter(){}

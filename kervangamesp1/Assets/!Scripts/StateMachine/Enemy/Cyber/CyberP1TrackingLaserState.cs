@@ -28,9 +28,8 @@ public class CyberP1TrackingLaserState : CyberState
         if(cyber.TrackingLaser == null){
             cyber.TrackingLaser = cyber.gameObject.AddComponent<LineRenderer>();
         }
-        if(cyber.TrackingLaser != null){
-            cyber.TrackingLaser.enabled = true;
-        }
+        cyber.TrackingLaser.enabled = true;
+        
         
 
         LaserStart = cyber.Body.transform;
@@ -51,7 +50,9 @@ public class CyberP1TrackingLaserState : CyberState
         }
     }
     public override void OnStateUpdate(){
-        Debug.Log("update");
+        
+        }
+    public override void OnStateFixedUpdate(){
         if(cyber.TrackingLaser!=null){
             if(CurrentWidth < MaxWidth){
             CurrentWidth += LaserExpandSpeed * Time.deltaTime;
@@ -76,8 +77,7 @@ public class CyberP1TrackingLaserState : CyberState
 
         LaserDirection = (LaserEnd.position - LaserStart.position).normalized;
         LaserDistance = Vector2.Distance(LaserStart.position, LaserEnd.position);
-        }
-    public override void OnStateFixedUpdate(){}
+    }
     public override void OnStateExit(){
         cyber.TrackingLaser.enabled = false;
     }
