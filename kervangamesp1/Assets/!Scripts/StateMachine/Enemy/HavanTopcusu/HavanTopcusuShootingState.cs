@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class HavanTopcusuShootingState : HavanTopcusuState
@@ -43,10 +44,12 @@ public class HavanTopcusuShootingState : HavanTopcusuState
             BladeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.BlackBullet,havanTopcusu.BlueBullet};
             CodeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.OrangeBullet,havanTopcusu.OrangeBullet};
             for(int i=0;i<3;i++){
-                BulletOrder = Random.Range(0,3);
+                BulletOrder = UnityEngine.Random.Range(0,3-i);
+                BladeProjectiles[BulletOrder].GetComponent<HavanTopcusuBullet>().bladebool = true;
                 yield return bulletSpawner.SpawnBullet(BladeProjectiles[BulletOrder],havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,2f);
                 BladeProjectiles.RemoveAt(BulletOrder);
-                BulletOrder = Random.Range(1,3);
+                BulletOrder = UnityEngine.Random.Range(0,3-i);
+                CodeProjectiles[BulletOrder].GetComponent<HavanTopcusuBullet>().bladebool = false;
                 yield return bulletSpawner.SpawnBullet(CodeProjectiles[BulletOrder],havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,2f);
                 CodeProjectiles.RemoveAt(BulletOrder);
             }     

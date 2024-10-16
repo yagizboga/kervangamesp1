@@ -10,6 +10,7 @@ public class HavanTopcusuBullet : MonoBehaviour
     Rigidbody2D rb;
     float Speed = 5f;
     float UpwardSpeed = 2f;
+    public bool bladebool = true;
     void Start(){
         Blade = GameObject.FindGameObjectWithTag("Blade");
         Code = GameObject.FindGameObjectWithTag("Code");
@@ -19,8 +20,12 @@ public class HavanTopcusuBullet : MonoBehaviour
     }
 
     void FixedUpdate(){
-        
-        
+        if(bladebool){
+            TrackBlade();
+        }
+        else if(!bladebool){
+            TrackCode();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other){
