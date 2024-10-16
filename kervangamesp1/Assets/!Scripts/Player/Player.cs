@@ -10,6 +10,7 @@ public enum VerticalShootingDir
 
 public class Player : StateMachine, IDamagable
 {
+    [Header("Player Attributes")]
     public int health;
     public float movementSpeed;
     public float jumpSpeed;
@@ -17,6 +18,7 @@ public class Player : StateMachine, IDamagable
     public Transform groundCheck;
     public LayerMask groundLayer;
     public Rigidbody2D rb;
+    public Animator animator;
 
     public bool isGrounded;
     public bool isFacingRight = true;

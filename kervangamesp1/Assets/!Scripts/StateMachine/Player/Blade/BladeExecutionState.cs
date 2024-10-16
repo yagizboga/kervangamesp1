@@ -59,7 +59,7 @@ public class BladeExecutionState : BladeState
         if (executionTimer <= 0)
         {
             blade.bossCamera.Priority = 1;
-            blade.ChangeState(new BladeMovingState(blade));
+            blade.ChangeState(new BladeIdleState(blade));
         }
 
         executionTimer -= Time.deltaTime;

@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class BladeMovingState : BladeState
 {
-    
     public BladeMovingState(Blade blade) : base(blade)
     {
-
+        
     }
 
     public override void OnStateEnter()
     {
-
+        
     }
 
     public override void OnStateExit()
     {
-
+        blade.animator.SetBool("isBladeRunning", false);
+        blade.animator.SetBool("isBladeJump", false);
     }
 
     public override void OnStateFixedUpdate()
@@ -27,44 +27,32 @@ public class BladeMovingState : BladeState
 
     public override void OnStateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            blade.ChangeState(new BladeAttackState(blade));
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (!blade.bossEnemy) return;
-            blade.bossCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
-            blade.bossCamera.Priority = 15;
-            blade.ChangeState(new BladeExecutionState(blade));
-        }
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            blade._virtualCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
-            blade._virtualCamera.Priority = 15;
-        }
-        if (Input.GetKeyUp(KeyCode.U))
-        {
-            blade._virtualCamera.Priority = 1;
-            blade.ChangeState(new BladeUltimateState(blade));
-        }
 
     }
-
+    
     private void HandleMovement()
     {
+        if (!(Input.GetKey(blade.jumpKey) || Input.GetKey(blade.moveLeftKey) || Input.GetKey(blade.crouchKey) || Input.GetKey(blade.moveRightKey)))
+        {
+            blade.ChangeState(new BladeIdleState(blade));
+        }
+
         blade.CheckGround();
         
-        if (blade.isGrounded && Input.GetKey(KeyCode.W))
+        if (blade.isGrounded && Input.GetKey(blade.jumpKey))
         {
+            blade.animator.SetBool("isBladeJump", true);
+
             blade.verticalShootingDir = VerticalShootingDir.Up;
             blade.ChangeAttackPoint();
             
             blade.rb.velocity = new Vector2(blade.rb.velocity.x, blade.jumpSpeed);
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(blade.moveLeftKey))
         {
+            blade.animator.SetBool("isBladeRunning", true);
+
             blade.verticalShootingDir = VerticalShootingDir.Normal;
             blade.ChangeAttackPoint();
 
@@ -75,8 +63,10 @@ public class BladeMovingState : BladeState
             }
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(blade.moveRightKey))
         {
+            blade.animator.SetBool("isBladeRunning", true);
+
             blade.verticalShootingDir = VerticalShootingDir.Normal;
             blade.ChangeAttackPoint();
 
@@ -87,7 +77,7 @@ public class BladeMovingState : BladeState
             }
         }
 
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(blade.crouchKey))
         {
             blade.verticalShootingDir = VerticalShootingDir.Down;
             blade.ChangeAttackPoint();
@@ -98,4 +88,5 @@ public class BladeMovingState : BladeState
             blade.rb.velocity = new Vector2(0, blade.rb.velocity.y);
         }
     }
+
 }

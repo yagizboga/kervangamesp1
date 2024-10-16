@@ -13,7 +13,7 @@ public class BladeUltimateState : BladeState
     public override void OnStateEnter()
     {
         Attack();
-        blade.ChangeState(new BladeMovingState(blade));
+        blade.ChangeState(new BladeIdleState(blade));
     }
 
     public override void OnStateExit()

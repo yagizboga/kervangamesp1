@@ -5,11 +5,26 @@ using UnityEngine;
 
 public class Blade : Player
 {
+    [Header("Blade Attributes")]
+    [Header("KeyCodes")]
+    public KeyCode jumpKey = KeyCode.W;
+    public KeyCode moveLeftKey = KeyCode.A;
+    public KeyCode crouchKey = KeyCode.S;
+    public KeyCode moveRightKey = KeyCode.D;
+    public KeyCode attackKey = KeyCode.Space;
+    public KeyCode executionKey = KeyCode.F;
+    public KeyCode ultimateKey = KeyCode.U;
+    
+    [Header("Execution")]
     public int executionPoint = 0;
     public int maxExecutionPoint = 5;
 
+    [Header("Attack")]
     public Transform attackPoint;
     public float attackRange = 1f;
+    public float comboTimer = 5f;
+
+    [Header("Enemies")]
     public LayerMask enemyLayers;
     public List<GameObject> enemiesList;
     public GameObject bossEnemy;
@@ -21,7 +36,8 @@ public class Blade : Player
     {
         health = 3;
         rb = GetComponent<Rigidbody2D>();
-        CurrentState = new BladeMovingState(this);    
+        animator = GetComponent<Animator>();
+        CurrentState = new BladeIdleState(this);    
     }
 
     public void ChangeAttackPoint()
