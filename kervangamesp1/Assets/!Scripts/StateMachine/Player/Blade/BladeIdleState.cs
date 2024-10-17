@@ -77,8 +77,8 @@ public class BladeIdleState : BladeState
 
         if (timer > 0)
         {
-            Debug.Log(timer);
             timer -= Time.deltaTime;
+            Debug.Log(timer);
             if (timer <= 0)
             {
                 currentComboNumber = 1;

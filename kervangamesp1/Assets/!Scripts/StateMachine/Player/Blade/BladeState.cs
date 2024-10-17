@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BladeState : State
+public class BladeState : MonoBehaviour, State 
 {
     protected Blade blade;
     public BladeState(Blade blade)

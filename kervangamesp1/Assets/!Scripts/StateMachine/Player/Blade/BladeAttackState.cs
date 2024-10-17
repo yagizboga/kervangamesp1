@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using Cinemachine;
 using UnityEngine;
 
 public class BladeAttackState : BladeState
 {
     private int currentComboNumber;
+    private float animationTime = .5f;
+    private float timer = 0; 
     public BladeAttackState(Blade blade, int comboNumber) : base(blade)
     {
         currentComboNumber = comboNumber;
@@ -13,16 +16,16 @@ public class BladeAttackState : BladeState
 
     public override void OnStateEnter()
     {
+        blade.animator.SetBool("isComboCut", false);
         Attack();
-        blade.ChangeState(new BladeIdleState(blade));
+        // blade.ChangeState(new BladeIdleState(blade));
     }
 
     public override void OnStateExit()
     {
-        blade.animator.SetBool("isComboCut", true);
         blade.animator.SetBool("isAttacking", false);
-        blade.animator.SetBool("isCombo2", false);
-        blade.animator.SetBool("isCombo3", false);
+        blade.animator.SetBool("isComboCut", true);
+
     }
 
     public override void OnStateFixedUpdate()
@@ -32,7 +35,12 @@ public class BladeAttackState : BladeState
 
     public override void OnStateUpdate()
     {
+        if (timer >= animationTime) blade.ChangeState(new BladeIdleState(blade));
         
+        if (timer <= animationTime)
+        {
+            timer += Time.deltaTime;
+        }
     }
 
     private void Attack()
@@ -73,3 +81,4 @@ public class BladeAttackState : BladeState
     }
 
 }
+
