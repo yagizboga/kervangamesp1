@@ -7,20 +7,14 @@ public class TeslaCoiller : StateMachine
 {
     public float Health = 100f;
     TeslaCoillerAwakeState awakeState;
-    public BoxCollider2D electricityCollider;
+    public GameObject ElectricPoint;
     void Start(){
         ChangeState(awakeState);
-        electricityCollider.enabled = false;
+        ElectricPoint = transform.GetChild(0).GameObject();
         
     }
     void Awake(){
         awakeState = new TeslaCoillerAwakeState(this);
-        electricityCollider = GetComponent<BoxCollider2D>();
-    }
-
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Blade")||other.CompareTag("Code"))
-        Debug.Log("Electric");
     }
 
 
