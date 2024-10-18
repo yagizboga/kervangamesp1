@@ -35,6 +35,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isCodeIdle
+    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isCodeHack
     m_EventTreshold: 0
@@ -91,7 +94,19 @@ AnimatorController:
   m_Name: CodeController
   serializedVersion: 5
   m_AnimatorParameters:
+  - m_Name: isCodeIdle
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
   - m_Name: isCodeRunning
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isCodeJump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -104,12 +119,6 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: isCodeHack
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: isCodeJump
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -136,6 +145,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isCodeIdle
+    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isCodeRunning
     m_EventTreshold: 0
@@ -188,6 +200,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isCodeIdle
+    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isCodeShooting
     m_EventTreshold: 0
@@ -243,6 +258,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isCodeHack
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCodeIdle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -9054440356408805989}
   m_Solo: 0
@@ -267,6 +285,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isCodeJump
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCodeIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5800482206489348692}
@@ -324,6 +345,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
+  - m_ConditionMode: 1
+    m_ConditionEvent: isCodeIdle
+    m_EventTreshold: 0
   - m_ConditionMode: 2
     m_ConditionEvent: isCodeJump
     m_EventTreshold: 0
@@ -352,6 +376,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isCodeShooting
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCodeIdle
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8930474178450114723}
   m_Solo: 0
@@ -376,6 +403,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: isCodeRunning
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isCodeIdle
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2794120389854243777}

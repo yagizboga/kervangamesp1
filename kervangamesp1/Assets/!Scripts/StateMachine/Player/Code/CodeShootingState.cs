@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CodeShootingState : CodeState
 {
+    private float animationTime = .5f;
+    private float timer = 0; 
     public CodeShootingState(Code code) : base(code)
     {
 
@@ -11,13 +13,13 @@ public class CodeShootingState : CodeState
 
     public override void OnStateEnter()
     {
+        code.animator.SetBool("isCodeShooting", true);
         code.Shoot();
-        code.ChangeState(new CodeMovingState(code)); 
     }
 
     public override void OnStateExit()
     {
-
+        code.animator.SetBool("isCodeShooting", false);
     }
 
     public override void OnStateFixedUpdate()
@@ -27,7 +29,12 @@ public class CodeShootingState : CodeState
 
     public override void OnStateUpdate()
     {
-
+        if (timer >= animationTime) code.ChangeState(new CodeIdleState(code));
+        
+        if (timer <= animationTime)
+        {
+            timer += Time.deltaTime;
+        }
     }
 
 }

@@ -11,71 +11,45 @@ public class CodeMovingState : CodeState
 
     public override void OnStateEnter()
     {
-
     }
 
     public override void OnStateExit()
     {
-
+        code.animator.SetBool("isCodeRunning", false);
+        code.animator.SetBool("isCodeJump", false);
     }
 
     public override void OnStateFixedUpdate()
     {
-        HandleMovement();
     }
 
     public override void OnStateUpdate()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            code.ChangeState(new CodeShootingState(code));           
-        }
-        if (code._isHackable)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                code.ChangeState(new CodeHackState(code));
-            }
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                code.ChangeState(new CodeDeactivateBarrierState(code));
-            }
-
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                code.ChangeState(new CodeStunState(code));
-            }
-
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                code._virtualCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
-                code._virtualCamera.Priority = 15;
-            }
-            if (Input.GetKeyUp(KeyCode.O))
-            {
-                code._virtualCamera.Priority = 1;
-                code.ChangeState(new CodeUltimateState(code));
-            }
-            
-
-            
-        }
+        HandleMovement();
     }
 
     private void HandleMovement()
     {
-        code.CheckGround();
-
-        if (code.isGrounded && Input.GetKey(KeyCode.UpArrow))
+        if (!(Input.GetKey(code.jumpKey) || Input.GetKey(code.moveLeftKey) || Input.GetKey(code.crouchKey) || Input.GetKey(code.moveRightKey)))
         {
-            code.rb.velocity = new Vector2(code.rb.velocity.x, code.jumpSpeed);
-            code.verticalShootingDir = VerticalShootingDir.Up;
-            code.ChangeFirePosition();
+            code.ChangeState(new CodeIdleState(code));
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        code.CheckGround();
+
+        if (code.isGrounded && Input.GetKey(code.jumpKey))
         {
+            code.animator.SetBool("isCodeJump", true);
+
+            code.verticalShootingDir = VerticalShootingDir.Up;
+            code.ChangeFirePosition();
+
+            code.rb.velocity = new Vector2(code.rb.velocity.x, code.jumpSpeed);
+        }
+
+        if (Input.GetKey(code.moveLeftKey))
+        {
+            code.animator.SetBool("isCodeRunning", true);
             code.verticalShootingDir = VerticalShootingDir.Normal;
             code.ChangeFirePosition();
             code.rb.velocity = new Vector2(-code.movementSpeed, code.rb.velocity.y);
@@ -85,8 +59,9 @@ public class CodeMovingState : CodeState
             }
         }
 
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(code.moveRightKey))
         {
+            code.animator.SetBool("isCodeRunning", true);
             code.verticalShootingDir = VerticalShootingDir.Normal;
             code.ChangeFirePosition();
             code.rb.velocity = new Vector2(code.movementSpeed, code.rb.velocity.y);
@@ -96,7 +71,7 @@ public class CodeMovingState : CodeState
             }
         }
 
-        else if(Input.GetKey(KeyCode.DownArrow))
+        else if(Input.GetKey(code.crouchKey))
         {
             code.verticalShootingDir = VerticalShootingDir.Down;
             code.ChangeFirePosition();

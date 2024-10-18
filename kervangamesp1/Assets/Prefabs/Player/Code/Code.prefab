@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 8786109611839021791}
   - component: {fileID: 1189216711073674009}
   - component: {fileID: 1315504611533976305}
+  - component: {fileID: 1375511850049004404}
   m_Layer: 0
   m_Name: Code
-  m_TagString: Player
+  m_TagString: Code
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,13 +58,20 @@ MonoBehaviour:
   groundCheck: {fileID: 8882357024711284013}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   rb: {fileID: 0}
+  animator: {fileID: 0}
   isGrounded: 0
   isFacingRight: 1
   verticalShootingDir: 0
   isAlive: 1
   _virtualCamera: {fileID: 0}
+  jumpKey: 303
+  lookUpKey: 273
+  moveLeftKey: 276
+  crouchKey: 274
+  moveRightKey: 275
+  hackKey: 101
   firePoint: {fileID: 8833866702982480443}
   bullet: {fileID: 8611579859721464829, guid: cf6c1d1c5c9da2a40b0fab554444f6b2, type: 3}
   _isHackable: 0
@@ -185,6 +193,27 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
+--- !u!95 &1375511850049004404
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4383651941354623995}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a9e5ef9f70e389b40926db483229a069, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7375275545669531121
 GameObject:
   m_ObjectHideFlags: 0
@@ -210,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 7375275545669531121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

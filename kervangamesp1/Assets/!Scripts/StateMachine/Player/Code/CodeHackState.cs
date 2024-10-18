@@ -12,12 +12,14 @@ public class CodeHackState : CodeState
 
     public override void OnStateEnter()
     {
+        code.animator.SetBool("isCodeHack", true);
         _projectileRb = GetNearesProjectileObject().GetComponent<Rigidbody2D>();
         _projectileRb.GetComponent<TempProjectile>()._isHacked = true;
     }
 
     public override void OnStateExit()
     {
+        code.animator.SetBool("isCodeHack", false);
         _projectileRb.GetComponent<TempProjectile>()._isHacked = false;
     }
 
@@ -30,7 +32,7 @@ public class CodeHackState : CodeState
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            code.ChangeState(new CodeMovingState(code));
+            code.ChangeState(new CodeIdleState(code));
         }
 
         HandleProjectileMovement();
