@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KosanAdam : StateMachine, IDamagable
+public class KosanAdam : Enemy
 
 {
 

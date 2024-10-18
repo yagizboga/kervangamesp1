@@ -14,13 +14,14 @@ public class AgirKalkanBladeTrackingState : AgirKalkanState
         BladeTransform = GameObject.FindGameObjectWithTag("Blade").transform;
     }
     public override void OnStateUpdate(){
-        Direction = (BladeTransform.position - agirKalkan.transform.position).normalized;
+        
     }
     public override void OnStateFixedUpdate(){
-       // if(agirKalkan.transform.position != BladeTransform.position + new Vector3(2,0,0) && agirKalkan.transform.position != BladeTransform.position - new Vector3(2,0,0)){
-        //    agirKalkan.transform.position += new Vector3(Direction.x,Direction.y,0) * agirKalkan.agirKalkanSpeed * Time.deltaTime;
-       // }
-        agirKalkan.transform.position += new Vector3(Direction.x,Direction.y,0) * agirKalkan.agirKalkanSpeed * Time.deltaTime;
+        Direction = (BladeTransform.position - agirKalkan.transform.Find("Body").transform.position).normalized;
+        if(agirKalkan.transform.Find("Body").transform.position.x - BladeTransform.position.x >2f){
+            agirKalkan.transform.position += new Vector3(Direction.x,0,0) * agirKalkan.agirKalkanSpeed * Time.deltaTime;
+        }
+        
         
     }
     public override void OnStateExit(){}

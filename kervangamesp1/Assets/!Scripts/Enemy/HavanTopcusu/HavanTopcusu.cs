@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HavanTopcusu : StateMachine
+public class HavanTopcusu : Enemy
 {
     private HavanTopcusuAwakeState awakeState;
     public Rigidbody2D rb;

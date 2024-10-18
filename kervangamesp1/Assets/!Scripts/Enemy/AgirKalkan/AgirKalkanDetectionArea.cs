@@ -5,6 +5,9 @@ using UnityEngine;
 public class AgirKalkanDetectionArea : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D other){
-        GameObject.FindGameObjectWithTag("AgirKalkan").GetComponent<AgirKalkan>().DetectionAreaBool = true;
+        if(other.CompareTag("Blade")){
+            GameObject.FindGameObjectWithTag("AgirKalkan").GetComponent<AgirKalkan>().DetectionAreaBool = true;
+        }
+        
     }
 }

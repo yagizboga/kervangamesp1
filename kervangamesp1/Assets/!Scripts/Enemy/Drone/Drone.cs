@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Drone : StateMachine
+public class Drone : Enemy
 {
     private DroneAwakeState awakeState;
     private DroneShootingState shootingState;
-    public Rigidbody2D rb;
-    public Transform BladeTransform;
-    public Transform CodeTransform;
+    public  Transform BladeTransform;
+    public  Transform CodeTransform;
     public GameObject BlueBullet;
     public GameObject OrangeBullet;
     public Transform BulletSpawnTransform;
@@ -16,7 +15,6 @@ public class Drone : StateMachine
     GameObject Code;
 
     private void Awake(){
-        rb = GetComponent<Rigidbody2D>();
         awakeState = new DroneAwakeState(this);
         shootingState = new DroneShootingState(this);
         Blade = GameObject.FindGameObjectWithTag("Blade");

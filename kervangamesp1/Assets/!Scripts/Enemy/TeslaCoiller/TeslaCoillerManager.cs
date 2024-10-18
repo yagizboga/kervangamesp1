@@ -1,23 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class TeslaCoillerManager : MonoBehaviour
 {
     public List<GameObject> TeslaCoillerList = new List<GameObject>();
-    public List<int> order;
+    public List<TeslaCoiller> TeslaCoillerOrder = new List<TeslaCoiller>();
 
     private LineRenderer lineRenderer;
-
+    int i=0;
+    int temp;
 
 
     void Start(){
-        order = new List<int>{};
         for(int i = 0;i<transform.childCount;i++){
-            TeslaCoillerList.Add(transform.GetChild(i).GameObject());
+            TeslaCoillerList.Add(transform.GetChild(i).gameObject);
         }
+
+        foreach(var teslaCoiller in TeslaCoillerList){
+            TeslaCoillerOrder.Add(teslaCoiller.GetComponent<TeslaCoiller>());
+            for(int i = 0;i<TeslaCoillerOrder.Count;i++){
+                 if(teslaCoiller.GetComponent<TeslaCoiller>().id < TeslaCoillerOrder[i].id){
+                    temp = TeslaCoillerList[i].GetComponent<TeslaCoiller>().id;
+                    TeslaCoillerList[i].GetComponent<TeslaCoiller>().id = teslaCoiller.GetComponent<TeslaCoiller>().id;
+                    teslaCoiller.GetComponent<TeslaCoiller>().id =temp;
+                 } 
+            }
+
+
+        }   
         
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.2f;
@@ -32,6 +46,7 @@ public class TeslaCoillerManager : MonoBehaviour
     }
 
     void Update(){
+        Debug.Log(i);
     }
 
     void StartElectricity(GameObject a, GameObject b){
@@ -49,12 +64,13 @@ public class TeslaCoillerManager : MonoBehaviour
 
     IEnumerator ElectricityLoop(){
         while(true){
-            for(int i = 0; i<order.Count;i++){
-            StartElectricity(TeslaCoillerList[order.IndexOf(i)],TeslaCoillerList[order.IndexOf(i+1)]);
+            StartElectricity(TeslaCoillerOrder[i].gameObject.transform.GetChild(0).gameObject,TeslaCoillerOrder[i+1].gameObject.transform.GetChild(0).gameObject);
             yield return new WaitForSeconds(2f);
+            if(i==TeslaCoillerList.Count-1){
+                i=0;
             }
+            i++;
         }
-    
     }
 
 }

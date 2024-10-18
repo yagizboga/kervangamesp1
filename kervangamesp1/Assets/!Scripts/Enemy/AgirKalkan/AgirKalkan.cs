@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AgirKalkan : StateMachine
+public class AgirKalkan : Enemy
 {
     public bool DetectionAreaBool = false;
     public bool TrapDetectionAreaBool = false;
@@ -16,13 +16,17 @@ public class AgirKalkan : StateMachine
     }
     void Start()
     {
-        ChangeState(bladeTrackingState);
+        ChangeState(awakeState);
     }
    
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(DetectionAreaBool){
+            ChangeState(bladeTrackingState);
+            DetectionAreaBool = false;
+            transform.Find("DetectionArea").GetComponent<BoxCollider2D>().enabled = false;
+        }
     }
 }

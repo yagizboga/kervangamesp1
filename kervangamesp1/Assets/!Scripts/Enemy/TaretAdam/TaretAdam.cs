@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TaretAdam : StateMachine, IDamagable
+public class TaretAdam : Enemy
 {
     public TaretAdamAwakeState awakeState;
     public TaretAdamShootingState shootingState;
