@@ -22,6 +22,7 @@ public class Blade : Player
     [Header("Attack")]
     public Transform attackPoint;
     public float attackRange = 1f;
+    public int currentComboNumber = 0;
     public float comboTimer = 5f;
 
     [Header("Enemies")]

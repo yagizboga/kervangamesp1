@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class BladeState : MonoBehaviour, State 
 {
     protected Blade blade;
+    private float timer = 0;
     public BladeState(Blade blade)
     {
         this.blade = blade;
@@ -27,6 +29,6 @@ public class BladeState : MonoBehaviour, State
 
     public virtual void OnStateUpdate()
     {
-        
+
     }
 }

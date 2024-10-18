@@ -6,26 +6,23 @@ using UnityEngine;
 
 public class BladeAttackState : BladeState
 {
-    private int currentComboNumber;
     private float animationTime = .5f;
     private float timer = 0; 
-    public BladeAttackState(Blade blade, int comboNumber) : base(blade)
+    public BladeAttackState(Blade blade) : base(blade)
     {
-        currentComboNumber = comboNumber;
+
     }
 
     public override void OnStateEnter()
     {
-        blade.animator.SetBool("isComboCut", false);
         Attack();
-        // blade.ChangeState(new BladeIdleState(blade));
     }
 
     public override void OnStateExit()
     {
-        blade.animator.SetBool("isAttacking", false);
-        blade.animator.SetBool("isComboCut", true);
-
+        blade.animator.SetBool("isCombo1", false);
+        blade.animator.SetBool("isCombo2", false);
+        blade.animator.SetBool("isCombo3", false);
     }
 
     public override void OnStateFixedUpdate()
@@ -45,20 +42,21 @@ public class BladeAttackState : BladeState
 
     private void Attack()
     {        
-        // Animation
-        Debug.Log("currentComboNumber: " + currentComboNumber);
-        switch (currentComboNumber)
+        switch (blade.currentComboNumber)
         {
             case 1:
-                blade.animator.SetBool("isAttacking", true);
+                blade.animator.SetBool("isCombo1", true);
+                BladeComboManager.Instance.StartBladeComboTimer();
             break;
 
             case 2:
                 blade.animator.SetBool("isCombo2", true);
+                BladeComboManager.Instance.StartBladeComboTimer();
             break;
                 
             case 3:
                 blade.animator.SetBool("isCombo3", true);
+                BladeComboManager.Instance.StopBladeComboTimer();
             break;
         }
 

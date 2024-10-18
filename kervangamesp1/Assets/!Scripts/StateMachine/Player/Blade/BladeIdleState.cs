@@ -6,9 +6,6 @@ using UnityEngine;
 
 public class BladeIdleState : BladeState
 {
-    private int currentComboNumber= 1;
-    private bool isCombo1Done = false;
-    private float timer = 0;
     public BladeIdleState(Blade blade) : base(blade)
     {
 
@@ -30,7 +27,7 @@ public class BladeIdleState : BladeState
     }
 
     public override void OnStateUpdate()
-    {
+    {        
         BladeMovement();
         
         BladeAttack(blade.attackKey);
@@ -53,39 +50,10 @@ public class BladeIdleState : BladeState
     {
         if (Input.GetKeyDown(keyCode))
         {
-            timer = blade.comboTimer;
-
-            if (currentComboNumber == 1)
-            {
-                Debug.Log("blade combo 1 entered");
-                blade.ChangeState(new BladeAttackState(blade, currentComboNumber));
-                currentComboNumber = 2;
-            }
-
-            else if (currentComboNumber == 2)
-            {
-                blade.ChangeState(new BladeAttackState(blade, currentComboNumber));
-                currentComboNumber = 3;
-            }
-
-            else if (currentComboNumber == 3)
-            {
-                blade.ChangeState(new BladeAttackState(blade, currentComboNumber));
-                currentComboNumber = 1;
-            }
-        }
-
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-            Debug.Log(timer);
-            if (timer <= 0)
-            {
-                currentComboNumber = 1;
-            }
+            blade.ChangeState(new BladeAttackState(blade));
         }
     }
-
+    
     private void BladeExecution(KeyCode keyCode)
     {
         if (Input.GetKeyDown(keyCode))

@@ -83,7 +83,6 @@ public class CyberP1TrackingLaserState : CyberState
     }
 
     void FireLaser(){
-        Debug.Log("Laser!");
         hit = Physics2D.Raycast(LaserStart.position,LaserDirection,LaserDistance);
             if(hit.collider.CompareTag("Blade")){
                 Debug.Log("Blade got shot");
