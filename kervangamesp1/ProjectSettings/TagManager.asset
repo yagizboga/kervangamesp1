@@ -12,6 +12,11 @@ TagManager:
   - BlackBullet
   - BlueBullet
   - OrangeBullet
+  - Enemy
+  - Barrier
+  - Stunnable
+  - Projectile
+  - Boss
   layers:
   - Default
   - TransparentFX

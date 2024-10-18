@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Code : Player
 {   
+    [Header("Code Attributes")]
+    [Header("KeyCodes")]
+    public KeyCode jumpKey = KeyCode.RightShift;
+    public KeyCode lookUpKey = KeyCode.UpArrow;
+    public KeyCode moveLeftKey = KeyCode.LeftArrow;
+    public KeyCode crouchKey = KeyCode.DownArrow;
+    public KeyCode moveRightKey = KeyCode.RightArrow;
+    public KeyCode hackKey = KeyCode.E;
+
     [SerializeField] protected GameObject firePoint;
     [SerializeField] protected Bullet bullet;
     public bool _isHackable = false;
@@ -15,7 +24,8 @@ public class Code : Player
     {
         health = 3;
         rb = GetComponent<Rigidbody2D>();
-        CurrentState = new CodeMovingState(this);    
+        animator = GetComponent<Animator>();
+        CurrentState = new CodeIdleState(this);    
     }
 
     public void Shoot()

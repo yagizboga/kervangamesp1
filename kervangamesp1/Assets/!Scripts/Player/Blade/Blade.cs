@@ -14,6 +14,8 @@ public class Blade : Player
     public KeyCode attackKey = KeyCode.Space;
     public KeyCode executionKey = KeyCode.F;
     public KeyCode ultimateKey = KeyCode.U;
+    public KeyCode parryKey = KeyCode.P;
+    public KeyCode grabKey = KeyCode.L;
     
     [Header("Execution")]
     public int executionPoint = 0;
