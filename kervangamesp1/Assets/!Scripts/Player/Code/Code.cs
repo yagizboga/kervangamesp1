@@ -16,6 +16,7 @@ public class Code : Player
     [SerializeField] protected GameObject firePoint;
     [SerializeField] protected Bullet bullet;
     public bool _isHackable = false;
+    public List<Enemy> enemiesList;
     public List<GameObject> _hackableProjectilesList;
     public List<GameObject> _barrierList;
     public List<GameObject> _stunEnemyList;
@@ -39,6 +40,8 @@ public class Code : Player
         {
             tempBullet.SetIsVerticalShooting(false);
         }
+
+        
         
     }
 

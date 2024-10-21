@@ -8,6 +8,7 @@ public class Bullet : MonoBehaviour
     private bool isVerticalShooting = false;
     private Rigidbody2D rb;
     
+    IDamagable damagable;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
     }
@@ -39,5 +40,13 @@ public class Bullet : MonoBehaviour
     public void SetIsVerticalShooting(bool _isVerticalShooting)
     {
         isVerticalShooting = _isVerticalShooting;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("AgirKalkan"))
+        {
+            damagable = other.gameObject.transform.parent.GetComponent<IDamagable>();
+        }
     }
 }

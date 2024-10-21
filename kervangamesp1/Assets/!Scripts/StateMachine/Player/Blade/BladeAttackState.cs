@@ -68,6 +68,7 @@ public class BladeAttackState : BladeState
             {
                 blade.executionPoint++;
             }
+            enemy.TakeDamage(blade.attackDamage);
         }
     }
 

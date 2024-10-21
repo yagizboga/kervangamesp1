@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface IDamagable{
-    public void TakeDamage(float damage){}
+    void TakeDamage(float damage){}
 }
