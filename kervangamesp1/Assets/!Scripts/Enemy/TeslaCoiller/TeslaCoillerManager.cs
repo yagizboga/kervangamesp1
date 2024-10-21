@@ -8,7 +8,6 @@ using UnityEngine;
 public class TeslaCoillerManager : MonoBehaviour
 {
     public List<GameObject> TeslaCoillerList = new List<GameObject>();
-    public List<TeslaCoiller> TeslaCoillerOrder = new List<TeslaCoiller>();
 
     private LineRenderer lineRenderer;
     int i=0;
@@ -16,23 +15,8 @@ public class TeslaCoillerManager : MonoBehaviour
 
 
     void Start(){
-        for(int i = 0;i<transform.childCount;i++){
-            TeslaCoillerList.Add(transform.GetChild(i).gameObject);
-        }
-
-        foreach(var teslaCoiller in TeslaCoillerList){
-            TeslaCoillerOrder.Add(teslaCoiller.GetComponent<TeslaCoiller>());
-            for(int i = 0;i<TeslaCoillerOrder.Count;i++){
-                 if(teslaCoiller.GetComponent<TeslaCoiller>().id < TeslaCoillerOrder[i].id){
-                    temp = TeslaCoillerList[i].GetComponent<TeslaCoiller>().id;
-                    TeslaCoillerList[i].GetComponent<TeslaCoiller>().id = teslaCoiller.GetComponent<TeslaCoiller>().id;
-                    teslaCoiller.GetComponent<TeslaCoiller>().id =temp;
-                 } 
-            }
-
-
-        }   
-        
+  
+    
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         lineRenderer.startWidth = 0.2f;
         lineRenderer.endWidth = 0.2f;
@@ -46,7 +30,7 @@ public class TeslaCoillerManager : MonoBehaviour
     }
 
     void Update(){
-        Debug.Log(i);
+      //Debug.Log(i);
     }
 
     void StartElectricity(GameObject a, GameObject b){
@@ -59,17 +43,25 @@ public class TeslaCoillerManager : MonoBehaviour
             Debug.Log("hit");
         }
 
-        lineRenderer.positionCount = 0;
+        
+
     }
 
     IEnumerator ElectricityLoop(){
         while(true){
-            StartElectricity(TeslaCoillerOrder[i].gameObject.transform.GetChild(0).gameObject,TeslaCoillerOrder[i+1].gameObject.transform.GetChild(0).gameObject);
-            yield return new WaitForSeconds(2f);
-            if(i==TeslaCoillerList.Count-1){
-                i=0;
+            if(i == TeslaCoillerList.Count-2){
+                i = 0;
             }
-            i++;
+            Debug.Log(TeslaCoillerList[i].GetComponent<TeslaCoiller>().ElectricPoint);
+            Debug.Log(TeslaCoillerList[i+1].GetComponent<TeslaCoiller>().ElectricPoint);
+            
+           
+            StartElectricity(TeslaCoillerList[i].GetComponent<TeslaCoiller>().ElectricPoint,TeslaCoillerList[i+1].GetComponent<TeslaCoiller>().ElectricPoint);
+            i+=1;
+
+            
+            
+            
         }
     }
 

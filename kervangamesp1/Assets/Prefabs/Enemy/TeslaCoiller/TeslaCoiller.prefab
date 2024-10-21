@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 488277054368056360}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0980554, y: -2.5418344, z: -0.0009849581}
+  m_LocalPosition: {x: 1.75, y: -0.48, z: -0.0009849581}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 100
-  ElectricPoint: {fileID: 0}
+  ElectricPoint: {fileID: 5467401274567208986}
   id: 0
 --- !u!1 &5467401274567208986
 GameObject:
