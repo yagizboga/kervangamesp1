@@ -9,12 +9,11 @@ public class TeslaCoiller : Enemy
 
     TeslaCoillerAwakeState awakeState;
     public GameObject ElectricPoint;
-    public int id;
 
 
     void Start(){
         ChangeState(awakeState);
-        ElectricPoint = transform.GetChild(0).GameObject();
+
 
         
     }
