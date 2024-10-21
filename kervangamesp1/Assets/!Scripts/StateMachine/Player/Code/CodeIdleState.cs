@@ -50,22 +50,23 @@ public class CodeIdleState : CodeState
 
     private void CodeHack()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            code.ChangeState(new CodeHackState(code));
+        }
         if (code._isHackable)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                code.ChangeState(new CodeHackState(code));
-            }
 
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                code.ChangeState(new CodeDeactivateBarrierState(code));
-            }
 
-            if (Input.GetKeyDown(KeyCode.T))
-            {
-                code.ChangeState(new CodeStunState(code));
-            }
+            // if (Input.GetKeyDown(KeyCode.R))
+            // {
+            //     code.ChangeState(new CodeDeactivateBarrierState(code));
+            // }
+
+            // if (Input.GetKeyDown(KeyCode.T))
+            // {
+            //     code.ChangeState(new CodeStunState(code));
+            // }
 
             if (Input.GetKeyDown(KeyCode.O))
             {

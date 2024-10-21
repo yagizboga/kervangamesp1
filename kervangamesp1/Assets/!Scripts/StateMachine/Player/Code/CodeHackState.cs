@@ -12,13 +12,19 @@ public class CodeHackState : CodeState
 
     public override void OnStateEnter()
     {
+        Debug.Log("Code Hack State Entered");
+
         code.animator.SetBool("isCodeHack", true);
-        _projectileRb = GetNearesProjectileObject().GetComponent<Rigidbody2D>();
-        _projectileRb.GetComponent<TempProjectile>()._isHacked = true;
+        // _projectileRb = GetNearesProjectileObject().GetComponent<Rigidbody2D>();
+        // _projectileRb.GetComponent<TempProjectile>()._isHacked = true;
+
+        HackEnemies();
     }
 
     public override void OnStateExit()
     {
+        Debug.Log("Code Hack State Exited");
+
         code.animator.SetBool("isCodeHack", false);
         _projectileRb.GetComponent<TempProjectile>()._isHacked = false;
     }
@@ -35,7 +41,30 @@ public class CodeHackState : CodeState
             code.ChangeState(new CodeIdleState(code));
         }
 
-        HandleProjectileMovement();
+        // HandleProjectileMovement();
+    }
+
+    private void HackEnemies()
+    {
+
+        HackBarrierEnemies();
+        HackStunnableEnemies();
+    }
+
+    private void HackBarrierEnemies()
+    {
+        foreach (var enemy in code._barrierList)
+        {
+            enemy.GetComponent<Enemy>().GetHacked(HackableEnemyType.Barrier);
+        }
+    }
+
+    private void HackStunnableEnemies()
+    {
+        foreach (var enemy in code._stunEnemyList)
+        {
+            enemy.GetComponent<Enemy>().GetHacked(HackableEnemyType.Stun);
+        }
     }
 
     private void HandleProjectileMovement()

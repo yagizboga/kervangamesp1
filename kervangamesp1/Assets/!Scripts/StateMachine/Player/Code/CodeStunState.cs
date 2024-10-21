@@ -12,10 +12,10 @@ public class CodeStunState : CodeState
 
     public override void OnStateEnter()
     {
-        _enemyRb = GetNearestStunEnemy().GetComponent<Rigidbody2D>();
-        _enemyRb.velocity = Vector3.zero;
+        // _enemyRb = GetNearestStunEnemy().GetComponent<Rigidbody2D>();
+        // _enemyRb.velocity = Vector3.zero;
 
-        code.ChangeState(new CodeMovingState(code));
+        // code.ChangeState(new CodeMovingState(code));
     }
 
     public override void OnStateExit()
