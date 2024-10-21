@@ -23,13 +23,15 @@ public class Blade : Player
 
     [Header("Attack")]
     public Transform attackPoint;
+    public float attackDamage = 25f;
+    // public float criticAttackDamage ??????
     public float attackRange = 1f;
-    public int currentComboNumber = 0;
+    public int currentComboNumber = 1;
     public float comboTimer = 5f;
 
     [Header("Enemies")]
     public LayerMask enemyLayers;
-    public List<GameObject> enemiesList;
+    public List<Enemy> enemiesList;
     public GameObject bossEnemy;
     public CinemachineVirtualCamera bossCamera;
 
@@ -62,11 +64,12 @@ public class Blade : Player
         }
     }
 
+    // TODO: Change the way of find enemy (Check layer of enemies rather than tag)
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            enemiesList.Add(other.gameObject);
+            enemiesList.Add(other.GetComponent<Enemy>());
         }
         
         if (other.gameObject.CompareTag("Boss"))
@@ -80,7 +83,7 @@ public class Blade : Player
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            enemiesList.Remove(other.gameObject);
+            enemiesList.Remove(other.GetComponent<Enemy>());
         }
 
         if (other.gameObject.CompareTag("Boss"))

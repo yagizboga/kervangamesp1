@@ -36,6 +36,8 @@ public class BladeIdleState : BladeState
 
         BladeUltimatePress(blade.ultimateKey);
         BladeUltimateRelease(blade.ultimateKey);
+
+        BladeGrab();
     }
 
     private void BladeMovement()
@@ -80,6 +82,14 @@ public class BladeIdleState : BladeState
         {
             blade._virtualCamera.Priority = 1;
             blade.ChangeState(new BladeUltimateState(blade));
+        }
+    }
+
+    private void BladeGrab()
+    {
+        if (BladeGrabManager.Instance.isBladeGrab)
+        {
+            blade.ChangeState(new BladeGrabState(blade));
         }
     }
 }

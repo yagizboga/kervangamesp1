@@ -5,15 +5,23 @@ using UnityEngine;
 public class Enemy : StateMachine, IDamagable
 {
     public float Health;
-    // Start is called before the first frame update
-    void Start()
+    public bool isDead = false;
+
+    public void TakeDamage(float damage)
     {
-        
+        if (isDead) return;
+
+        Health -= damage;
+
+        if (Health <= 0)
+        {
+            isDead = true;
+            DestroyEnemy();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void DestroyEnemy()
     {
-        
+        Destroy(gameObject);
     }
 }
