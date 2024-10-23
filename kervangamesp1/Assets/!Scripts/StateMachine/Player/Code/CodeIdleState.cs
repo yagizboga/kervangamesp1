@@ -30,6 +30,8 @@ public class CodeIdleState : CodeState
         CodeAttack();
 
         CodeHack();
+
+        CodeGrab();
     }
 
     private void CodeMovement()
@@ -78,6 +80,14 @@ public class CodeIdleState : CodeState
                 code._virtualCamera.Priority = 1;
                 code.ChangeState(new CodeUltimateState(code));
             }
+        }
+    }
+
+    private void CodeGrab()
+    {
+        if (BladeGrabManager.Instance.isBladeGrab)
+        {
+            code.ChangeState(new CodeGrabState(code));
         }
     }
 }
