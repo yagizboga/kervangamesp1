@@ -42,6 +42,7 @@ public class Blade : Player
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CurrentState = new BladeIdleState(this);    
+        healthText.text = health.ToString();
     }
 
     public void ChangeAttackPoint()

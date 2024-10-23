@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5018222750941720398}
   - component: {fileID: 4582231372377781171}
   - component: {fileID: 3026965760713521923}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Drone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bd7aaade9468e4b9fd5ae0cf3adab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 100
   isDead: 0
   BladeTransform: {fileID: 0}
   CodeTransform: {fileID: 0}

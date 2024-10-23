@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4183397987832686516}
   - component: {fileID: 376431719024872005}
   - component: {fileID: 2864150570111739584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HavanTopcusu
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c29c3ff0dd97dc41a0d12902d0b5c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 100
   isDead: 0
   rb: {fileID: 0}
   BulletPosition: {fileID: 7942024863421304488}

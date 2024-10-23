@@ -45,8 +45,7 @@ public class Enemy : StateMachine, IDamagable
 
     public void StunHacked()
     {
-        Debug.Log("Stun Hacked");
-        // GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+        GetComponent<Rigidbody2D>().velocity = Vector3.zero;
     }
 
     public void TakeDamage(float damage)

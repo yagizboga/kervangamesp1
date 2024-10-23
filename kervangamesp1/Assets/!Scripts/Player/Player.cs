@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 
 public enum VerticalShootingDir
@@ -24,6 +25,8 @@ public class Player : StateMachine, IDamagable
     public bool isGrounded;
     public bool isFacingRight = true;
     public VerticalShootingDir verticalShootingDir;
+
+    public TextMeshProUGUI healthText;
     
     public bool isAlive = true;
     public CinemachineVirtualCamera _virtualCamera;
@@ -39,6 +42,8 @@ public class Player : StateMachine, IDamagable
             Debug.Log("Can: " + health);
             StartCoroutine(SlowDownTime());
             health -= damage;
+
+            healthText.text = health.ToString();
 
             if (health <= 0)
             {

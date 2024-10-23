@@ -63,7 +63,6 @@ public class CodeHackState : CodeState
     {
         foreach (var enemy in code._stunEnemyList)
         {
-            
             enemy.GetComponent<Enemy>().GetHacked(HackableEnemyType.Stun);
         }
     }
