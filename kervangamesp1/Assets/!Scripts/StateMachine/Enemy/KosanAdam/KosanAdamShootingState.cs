@@ -63,7 +63,7 @@ public class KosanAdamShootingState : KosanAdamState
         if (blade != null)
         {
             Vector2 direction = (blade.transform.position - kosanAdam.transform.position).normalized;
-            GameObject bullet = GameObject.Instantiate(kosanAdam.BlueBullet, kosanAdam.transform.position, Quaternion.identity);
+            GameObject bullet = GameObject.Instantiate(kosanAdam.BlueBullet, kosanAdam.SpawnPoint.transform.position, Quaternion.identity);
             bullet.GetComponent<Rigidbody2D>().velocity = direction * 5f; 
         }
     }

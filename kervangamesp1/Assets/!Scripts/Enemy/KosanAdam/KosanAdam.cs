@@ -10,6 +10,7 @@ private KosanAdamAwakeState AwakeState;
  public Rigidbody2D rb;
 private KosanAdamShootingState shootingState;
 public GameObject BlueBullet;
+public GameObject SpawnPoint;
 
 private void Awake(){
     rb = GetComponent<Rigidbody2D>();
