@@ -37,6 +37,7 @@ public class KosanAdamShootingState : KosanAdamState
     {
        
         GameObject blade = GameObject.FindWithTag("Blade");
+        Debug.Log(blade);
         if (blade != null)
         {
             Vector2 direction = (blade.transform.position - kosanAdam.transform.position).normalized;
