@@ -15,7 +15,6 @@ public class BladeAttackState : BladeState
 
     public override void OnStateEnter()
     {
-        Debug.Log("attackstate");
         Attack();
     }
 
