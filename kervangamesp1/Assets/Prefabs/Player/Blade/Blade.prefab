@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 6103450298238991080}
   - component: {fileID: 3306038318273707920}
   - component: {fileID: 6668710179341282256}
-  - component: {fileID: 555556317044832799}
+  - component: {fileID: 4360416360688362527}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Blade
@@ -508,7 +508,7 @@ MonoBehaviour:
   attackPoint: {fileID: 211362453555470665}
   attackDamage: 25
   attackRange: 1
-  currentComboNumber: 0
+  currentComboNumber: 1
   comboTimer: 5
   enemyLayers:
     serializedVersion: 2
@@ -644,7 +644,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!95 &555556317044832799
+--- !u!95 &4360416360688362527
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

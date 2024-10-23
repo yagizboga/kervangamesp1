@@ -6917,6 +6917,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3356937591156712607, guid: d8c3029f32d857345ae7835ddc6f6019, type: 3}
+      propertyPath: currentComboNumber
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3356937591156712607, guid: d8c3029f32d857345ae7835ddc6f6019, type: 3}
       propertyPath: groundLayer.m_Bits
       value: 8
       objectReference: {fileID: 0}
