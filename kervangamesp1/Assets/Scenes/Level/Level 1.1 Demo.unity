@@ -913,7 +913,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.8653333, y: 0.8653333, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -6416,7 +6416,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 3.6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6836,6 +6836,67 @@ Transform:
   - {fileID: 1700245993}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1262471292
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1945998368137816677, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.820072
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.654353
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4211824539079956513, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809257477979136494, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_Name
+      value: AgirKalkan
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
 --- !u!1001 &1311067494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7375,7 +7436,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.8653333, y: 0.8653333, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -19571,6 +19632,10 @@ PrefabInstance:
       propertyPath: _blade
       value: 
       objectReference: {fileID: 1373973223}
+    - target: {fileID: 3100760384399974102, guid: 6cd3dbff95dca534abc8bd026d9b0172, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 1.65
+      objectReference: {fileID: 0}
     - target: {fileID: 8116212693166053216, guid: 6cd3dbff95dca534abc8bd026d9b0172, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.3155723
@@ -19610,6 +19675,10 @@ PrefabInstance:
     - target: {fileID: 8116212693166053216, guid: 6cd3dbff95dca534abc8bd026d9b0172, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9212735097110138374, guid: 6cd3dbff95dca534abc8bd026d9b0172, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 3.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19827,3 +19896,4 @@ SceneRoots:
   - {fileID: 2111745799}
   - {fileID: 7193999701768271983}
   - {fileID: 1807312861}
+  - {fileID: 1262471292}
