@@ -307,7 +307,7 @@ GameObject:
   - component: {fileID: 8490008149234232485}
   m_Layer: 0
   m_Name: AgirKalkan
-  m_TagString: AgirKalkan
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 0
+  isDead: 0
   DetectionAreaBool: 0
   TrapDetectionAreaBool: 0
   agirKalkanSpeed: 4

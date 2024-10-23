@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 2864150570111739584}
   m_Layer: 0
   m_Name: HavanTopcusu
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +133,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c29c3ff0dd97dc41a0d12902d0b5c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Health: 0
+  isDead: 0
   rb: {fileID: 0}
   BulletPosition: {fileID: 7942024863421304488}
   BlackBullet: {fileID: 6939200628157990237, guid: 9977d581d9e0c074d8d08a5bce630931, type: 3}
