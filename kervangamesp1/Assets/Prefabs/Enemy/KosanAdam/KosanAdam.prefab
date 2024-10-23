@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3680542628984383972}
   - component: {fileID: 7391346254632266761}
   - component: {fileID: 844044399412243}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KosanAdam
   m_TagString: Enemy
   m_Icon: {fileID: 0}

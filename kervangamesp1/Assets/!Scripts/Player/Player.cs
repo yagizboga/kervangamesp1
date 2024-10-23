@@ -19,6 +19,7 @@ public class Player : StateMachine, IDamagable
     public LayerMask groundLayer;
     public Rigidbody2D rb;
     public Animator animator;
+    public LayerMask enemyLayer;
 
     public bool isGrounded;
     public bool isFacingRight = true;

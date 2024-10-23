@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 20f;
+    [SerializeField] private LayerMask enemyLayer;
     private bool isVerticalShooting = false;
     private Rigidbody2D rb;
     
@@ -44,10 +45,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.layer == 7)
         {
             other.GetComponent<Enemy>().TakeDamage(25f);
             Destroy(this.gameObject);
-         }
+        }
     }
 }
