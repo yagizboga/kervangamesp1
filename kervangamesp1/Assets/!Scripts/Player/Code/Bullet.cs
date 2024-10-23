@@ -46,8 +46,8 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            damagable = other.gameObject.transform.parent.GetComponent<IDamagable>();
-            damagable.TakeDamage(25f);
-        }
+            other.GetComponent<Enemy>().TakeDamage(25f);
+            Destroy(this.gameObject);
+         }
     }
 }
