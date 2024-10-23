@@ -30,7 +30,7 @@ public class TeslaCoillerManager : MonoBehaviour
     }
 
     void Update(){
-      Debug.Log(i);
+
     }
 
     void StartElectricity(GameObject a, GameObject b){

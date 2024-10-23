@@ -48,5 +48,21 @@ public class Bullet : MonoBehaviour
         {
             damagable = other.gameObject.transform.parent.GetComponent<IDamagable>();
         }
+        if (other.gameObject.CompareTag("Drone"))
+        {
+            damagable = other.GetComponent<IDamagable>();
+        }
+        if (other.gameObject.CompareTag("HavanTopcusu"))
+        {
+            damagable = other.GetComponent<IDamagable>();
+        }
+        if (other.gameObject.CompareTag("KosanAdam"))
+        {
+            damagable = other.GetComponent<IDamagable>();
+        }
+        if (other.gameObject.CompareTag("TaretAdam"))
+        {
+            damagable = other.GetComponent<IDamagable>();
+        }
     }
 }
