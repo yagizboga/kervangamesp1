@@ -12,18 +12,36 @@ private KosanAdamShootingState shootingState;
 public GameObject BlueBullet;
 public GameObject SpawnPoint;
 
-private void Awake(){
-    rb = GetComponent<Rigidbody2D>();
-    AwakeState = new KosanAdamAwakeState(this);
-    shootingState = new KosanAdamShootingState(this);
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        AwakeState = new KosanAdamAwakeState(this);
+        shootingState = new KosanAdamShootingState(this);
     }
-     void Start(){
+
+    void Start()
+    {
         ChangeState(AwakeState);
     }
-    void TakeDamage(float damage){
+
+    private void Update() 
+    {
+        if (GetComponent<Rigidbody2D>().velocity.x > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (GetComponent<Rigidbody2D>().velocity.x <= 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }      
+    }
+
+    void TakeDamage(float damage)
+    {
         
     }
-   private void OnTriggerEnter2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log(other.tag);
         if (other.CompareTag("Blade") || other.CompareTag("Code"))

@@ -11,7 +11,7 @@ public enum VerticalShootingDir
 public class Player : StateMachine, IDamagable
 {
     [Header("Player Attributes")]
-    public int health;
+    public float health;
     public float movementSpeed;
     public float jumpSpeed;
     public float fallMultiplier;
@@ -35,12 +35,14 @@ public class Player : StateMachine, IDamagable
     {
         if (isAlive)
         {
+            Debug.Log("Can: " + health);
             StartCoroutine(SlowDownTime());
-            health--;
+            health -= damage;
 
             if (health <= 0)
             {
                 isAlive = false;
+                gameObject.SetActive(false);
             }
         }
     }

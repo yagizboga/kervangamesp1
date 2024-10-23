@@ -39,7 +39,6 @@ public class Blade : Player
 
     private void Awake() 
     {
-        health = 3;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CurrentState = new BladeIdleState(this);    
