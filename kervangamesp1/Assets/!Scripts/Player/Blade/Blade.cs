@@ -39,10 +39,10 @@ public class Blade : Player
 
     private void Awake() 
     {
-        health = 3;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CurrentState = new BladeIdleState(this);    
+        healthText.text = health.ToString();
     }
 
     public void ChangeAttackPoint()
@@ -67,7 +67,7 @@ public class Blade : Player
     // TODO: Change the way of find enemy (Check layer of enemies rather than tag)
     private void OnTriggerEnter2D(Collider2D other) 
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.layer == 7)
         {
             enemiesList.Add(other.GetComponent<Enemy>());
         }
@@ -81,7 +81,7 @@ public class Blade : Player
 
     private void OnTriggerExit2D(Collider2D other) 
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.layer == 7)
         {
             enemiesList.Remove(other.GetComponent<Enemy>());
         }

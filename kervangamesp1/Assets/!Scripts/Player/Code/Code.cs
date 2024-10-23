@@ -22,10 +22,10 @@ public class Code : Player
     public List<GameObject> _ultimateEnemyList;
     private void Awake() 
     {
-        health = 3;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        CurrentState = new CodeIdleState(this);    
+        CurrentState = new CodeIdleState(this);   
+        healthText.text = health.ToString(); 
     }
 
     public void Shoot()

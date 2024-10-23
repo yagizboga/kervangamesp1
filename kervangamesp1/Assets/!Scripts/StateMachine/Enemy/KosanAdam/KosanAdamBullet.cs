@@ -13,9 +13,12 @@ public class KosanAdamBullet : MonoBehaviour
         rb.velocity = BulletSpeed;
     }
 
-    void OnTriggerEnter2D(Collider2D other){
-        if(other.CompareTag("Blade") || other.CompareTag("Code")){
-            Debug.Log("Shoot!");
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Blade") || other.CompareTag("Code"))
+        {
+            other.GetComponent<Player>().TakeDamage(1f);
+            Destroy(this.gameObject);
         }
     }
 }

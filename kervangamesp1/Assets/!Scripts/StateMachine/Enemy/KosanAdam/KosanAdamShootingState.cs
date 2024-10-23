@@ -23,7 +23,6 @@ public class KosanAdamShootingState : KosanAdamState
 
     public override void OnStateUpdate()
     {
-       
         MoveTowardsBlade();
     }
 
@@ -37,7 +36,7 @@ public class KosanAdamShootingState : KosanAdamState
     {
        
         GameObject blade = GameObject.FindWithTag("Blade");
-        Debug.Log(blade);
+        Debug.Log("Blade: " + blade);
         if (blade != null)
         {
             Vector2 direction = (blade.transform.position - kosanAdam.transform.position).normalized;

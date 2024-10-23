@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 3680542628984383972}
   - component: {fileID: 7391346254632266761}
   - component: {fileID: 844044399412243}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: KosanAdam
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2696662829701084d9965da154ad78b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 0
+  Health: 100
   isDead: 0
   rb: {fileID: 0}
   BlueBullet: {fileID: 2375675059800644180, guid: 89f7d1c2b508f9f40aece9a40154aa79, type: 3}
@@ -323,7 +323,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -6.83, y: 0.92}
+  m_Offset: {x: -7.52, y: 0.92}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -334,7 +334,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 16.16, y: 1}
+  m_Size: {x: 35.78, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &6317531239122902893
 MonoBehaviour:

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float bulletSpeed = 20f;
+    [SerializeField] private LayerMask enemyLayer;
     private bool isVerticalShooting = false;
     private Rigidbody2D rb;
     
@@ -44,25 +45,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("AgirKalkan"))
+        if (other.gameObject.layer == 7)
         {
-            damagable = other.gameObject.transform.parent.GetComponent<IDamagable>();
-        }
-        if (other.gameObject.CompareTag("Drone"))
-        {
-            damagable = other.GetComponent<IDamagable>();
-        }
-        if (other.gameObject.CompareTag("HavanTopcusu"))
-        {
-            damagable = other.GetComponent<IDamagable>();
-        }
-        if (other.gameObject.CompareTag("KosanAdam"))
-        {
-            damagable = other.GetComponent<IDamagable>();
-        }
-        if (other.gameObject.CompareTag("TaretAdam"))
-        {
-            damagable = other.GetComponent<IDamagable>();
+            other.GetComponent<Enemy>().TakeDamage(25f);
+            Destroy(this.gameObject);
         }
     }
 }

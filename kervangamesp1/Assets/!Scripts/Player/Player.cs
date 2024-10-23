@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using TMPro;
 using UnityEngine;
 
 public enum VerticalShootingDir
@@ -11,7 +12,7 @@ public enum VerticalShootingDir
 public class Player : StateMachine, IDamagable
 {
     [Header("Player Attributes")]
-    public int health;
+    public float health;
     public float movementSpeed;
     public float jumpSpeed;
     public float fallMultiplier;
@@ -19,10 +20,13 @@ public class Player : StateMachine, IDamagable
     public LayerMask groundLayer;
     public Rigidbody2D rb;
     public Animator animator;
+    public LayerMask enemyLayer;
 
     public bool isGrounded;
     public bool isFacingRight = true;
     public VerticalShootingDir verticalShootingDir;
+
+    public TextMeshProUGUI healthText;
     
     public bool isAlive = true;
     public CinemachineVirtualCamera _virtualCamera;
@@ -35,12 +39,16 @@ public class Player : StateMachine, IDamagable
     {
         if (isAlive)
         {
+            Debug.Log("Can: " + health);
             StartCoroutine(SlowDownTime());
-            health--;
+            health -= damage;
+
+            healthText.text = health.ToString();
 
             if (health <= 0)
             {
                 isAlive = false;
+                gameObject.SetActive(false);
             }
         }
     }

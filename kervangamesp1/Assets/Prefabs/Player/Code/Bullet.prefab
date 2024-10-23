@@ -162,4 +162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  code: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
