@@ -7,10 +7,10 @@ using UnityEngine;
 
 public class TeslaCoillerManager : MonoBehaviour
 {
-    public List<GameObject> TeslaCoillerList = new List<GameObject>();
+    public List<GameObject> TeslaCoillerList;
 
     private LineRenderer lineRenderer;
-    int i=0;
+    int i;
     int temp;
 
 
@@ -30,18 +30,16 @@ public class TeslaCoillerManager : MonoBehaviour
     }
 
     void Update(){
-      //Debug.Log(i);
+      Debug.Log(i);
     }
 
     void StartElectricity(GameObject a, GameObject b){
-        RaycastHit2D hit = Physics2D.Linecast(a.transform.position,b.transform.position);
+
+    
 
         lineRenderer.SetPosition(0,new Vector3(a.transform.position.x,a.transform.position.y,0));
         lineRenderer.SetPosition(1,new Vector3(b.transform.position.x,b.transform.position.y,0));
 
-        if(hit.collider!=null && hit.collider.CompareTag("Blade")||hit.collider.CompareTag("Code")){
-            Debug.Log("hit");
-        }
 
         
 
@@ -49,19 +47,20 @@ public class TeslaCoillerManager : MonoBehaviour
 
     IEnumerator ElectricityLoop(){
         while(true){
-            if(i == TeslaCoillerList.Count-2){
-                i = 0;
-            }
+            
             Debug.Log(TeslaCoillerList[i].GetComponent<TeslaCoiller>().ElectricPoint);
             Debug.Log(TeslaCoillerList[i+1].GetComponent<TeslaCoiller>().ElectricPoint);
             
-           
+            
+            
             StartElectricity(TeslaCoillerList[i].GetComponent<TeslaCoiller>().ElectricPoint,TeslaCoillerList[i+1].GetComponent<TeslaCoiller>().ElectricPoint);
-            i+=1;
-
-            
-            
-            
+            if(i == TeslaCoillerList.Count-2){        
+                i = 0;
+            }
+            else{
+                i+=1;
+            }
+            yield return new WaitForSeconds(2f);
         }
     }
 
