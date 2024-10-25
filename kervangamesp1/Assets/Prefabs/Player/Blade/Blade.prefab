@@ -439,6 +439,7 @@ GameObject:
   - component: {fileID: 3306038318273707920}
   - component: {fileID: 6668710179341282256}
   - component: {fileID: 4360416360688362527}
+  - component: {fileID: 8195825607708061660}
   m_Layer: 0
   m_Name: Blade
   m_TagString: Blade
@@ -479,7 +480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99da4b67e783fd14fb06fc59fc4ec65b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
   movementSpeed: 5
   jumpSpeed: 5
   fallMultiplier: 2
@@ -489,9 +490,13 @@ MonoBehaviour:
     m_Bits: 8
   rb: {fileID: 0}
   animator: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
   isGrounded: 0
   isFacingRight: 1
   verticalShootingDir: 0
+  healthText: {fileID: 0}
   isAlive: 1
   _virtualCamera: {fileID: 5493993642639077738}
   jumpKey: 119
@@ -665,6 +670,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8195825607708061660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7727319189309117336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db01d1e343c666e4a801771ba66ec9c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  releaseCoolDown: 3
+  isBladeGrab: 0
 --- !u!1 &8878601579431592038
 GameObject:
   m_ObjectHideFlags: 0

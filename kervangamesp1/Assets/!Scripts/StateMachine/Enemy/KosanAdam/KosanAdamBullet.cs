@@ -17,7 +17,7 @@ public class KosanAdamBullet : MonoBehaviour
     {
         if(other.CompareTag("Blade") || other.CompareTag("Code"))
         {
-            other.GetComponent<Player>().TakeDamage(1f);
+            other.GetComponent<Player>().TakeDamage(1);
             Destroy(this.gameObject);
         }
     }

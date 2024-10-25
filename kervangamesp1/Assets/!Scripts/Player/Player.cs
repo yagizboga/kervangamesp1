@@ -12,7 +12,7 @@ public enum VerticalShootingDir
 public class Player : StateMachine, IDamagable
 {
     [Header("Player Attributes")]
-    public float health;
+    public int health;
     public float movementSpeed;
     public float jumpSpeed;
     public float fallMultiplier;
@@ -25,8 +25,6 @@ public class Player : StateMachine, IDamagable
     public bool isGrounded;
     public bool isFacingRight = true;
     public VerticalShootingDir verticalShootingDir;
-
-    public TextMeshProUGUI healthText;
     
     public bool isAlive = true;
     public CinemachineVirtualCamera _virtualCamera;
@@ -35,15 +33,13 @@ public class Player : StateMachine, IDamagable
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1, 0.5f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
     
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if (isAlive)
         {
             Debug.Log("Can: " + health);
             StartCoroutine(SlowDownTime());
             health -= damage;
-
-            healthText.text = health.ToString();
 
             if (health <= 0)
             {

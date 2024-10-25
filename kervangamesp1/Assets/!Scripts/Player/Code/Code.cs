@@ -25,7 +25,6 @@ public class Code : Player
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CurrentState = new CodeIdleState(this);   
-        healthText.text = health.ToString(); 
     }
 
     public void Shoot()
