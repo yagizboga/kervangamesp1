@@ -59,6 +59,7 @@ public class BladeMovingState : BladeState
             blade.rb.velocity = new Vector2(-blade.movementSpeed, blade.rb.velocity.y);
             if (blade.isFacingRight)
             {
+                blade.spriteRenderer.flipX = true;
                 blade.Flip();
             }
         }
@@ -73,6 +74,7 @@ public class BladeMovingState : BladeState
             blade.rb.velocity = new Vector2(blade.movementSpeed, blade.rb.velocity.y);
             if (!blade.isFacingRight)
             {
+                blade.spriteRenderer.flipX = false;
                 blade.Flip();
             }
         }

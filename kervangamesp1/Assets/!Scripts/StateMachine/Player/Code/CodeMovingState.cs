@@ -55,6 +55,7 @@ public class CodeMovingState : CodeState
             code.rb.velocity = new Vector2(-code.movementSpeed, code.rb.velocity.y);
             if (code.isFacingRight)
             {
+                code.spriteRenderer.flipX = true;
                 code.Flip();
             }
         }
@@ -67,6 +68,7 @@ public class CodeMovingState : CodeState
             code.rb.velocity = new Vector2(code.movementSpeed, code.rb.velocity.y);
             if (!code.isFacingRight)
             {
+                code.spriteRenderer.flipX = false;
                 code.Flip();
             }
         }

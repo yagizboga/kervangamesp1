@@ -49,6 +49,7 @@ public class CodeGrabState : CodeState
                         
             if (code.isFacingRight)
             {
+                code.spriteRenderer.flipX = true;
                 code.Flip();
             }
         }
@@ -59,6 +60,7 @@ public class CodeGrabState : CodeState
 
             if (!code.isFacingRight)
             {
+                code.spriteRenderer.flipX = false;
                 code.Flip();
             }
         }

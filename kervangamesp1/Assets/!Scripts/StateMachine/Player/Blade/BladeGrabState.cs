@@ -48,6 +48,7 @@ public class BladeGrabState : BladeState
                         
             if (blade.isFacingRight)
             {
+                blade.spriteRenderer.flipX = true;
                 blade.Flip();
             }
         }
@@ -58,6 +59,7 @@ public class BladeGrabState : BladeState
 
             if (!blade.isFacingRight)
             {
+                blade.spriteRenderer.flipX = false;
                 blade.Flip();
             }
         }

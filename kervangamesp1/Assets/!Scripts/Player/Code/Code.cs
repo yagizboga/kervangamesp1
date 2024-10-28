@@ -24,6 +24,7 @@ public class Code : Player
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         CurrentState = new CodeIdleState(this);   
     }
 

@@ -20,6 +20,7 @@ public class Player : StateMachine, IDamagable
     public LayerMask groundLayer;
     public Rigidbody2D rb;
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
     public LayerMask enemyLayer;
 
     public bool isGrounded;
@@ -28,6 +29,7 @@ public class Player : StateMachine, IDamagable
     
     public bool isAlive = true;
     public CinemachineVirtualCamera _virtualCamera;
+    public GameObject canBeFlippedObj;
 
     public void CheckGround() {
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1, 0.5f), CapsuleDirection2D.Horizontal, 0, groundLayer);
@@ -53,7 +55,7 @@ public class Player : StateMachine, IDamagable
     {
         isFacingRight = !isFacingRight;
 
-        transform.Rotate(0f, 180f, 0f);
+        canBeFlippedObj.transform.Rotate(0f, 180f, 0f);
     }
 
     private IEnumerator SlowDownTime()

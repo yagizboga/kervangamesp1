@@ -42,6 +42,7 @@ public class Blade : Player
         health = 3;
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         CurrentState = new BladeIdleState(this);    
     }
 

@@ -29,7 +29,7 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void FollowPlayer(Transform player)
     {
-        player.rotation = Quaternion.Euler(0, 0, 0);
+        // player.rotation = Quaternion.Euler(0, 0, 0);
         virtualCamera.Follow = player;
     }
 }
