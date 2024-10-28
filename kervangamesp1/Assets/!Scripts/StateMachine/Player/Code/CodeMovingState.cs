@@ -36,6 +36,7 @@ public class CodeMovingState : CodeState
         }
 
         code.CheckGround();
+        if (code.isGrounded) CodeGrabManager.Instance.isCodeRelease = false;
 
         if (code.isGrounded && Input.GetKey(code.jumpKey))
         {

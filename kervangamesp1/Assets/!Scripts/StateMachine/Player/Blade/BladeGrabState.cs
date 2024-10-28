@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BladeGrabState : BladeState
 {
-    private float bladeYPos;
     public BladeGrabState(Blade blade) : base(blade)
     {
 
@@ -12,14 +11,14 @@ public class BladeGrabState : BladeState
     public override void OnStateEnter()
     {
         blade.animator.SetBool("isBladeGrab", true);
-        bladeYPos = blade.gameObject.transform.position.y;
         blade.rb.gravityScale = 0;
     }
 
     public override void OnStateExit()
     {
         blade.animator.SetBool("isBladeGrab", false);
-        blade.rb.gravityScale = 1;
+        BladeGrabManager.Instance.isBladeRelease = true;
+        blade.rb.gravityScale = 1.75f;
     }
 
     public override void OnStateFixedUpdate()
@@ -32,7 +31,6 @@ public class BladeGrabState : BladeState
         if (!BladeGrabManager.Instance.isBladeGrab) blade.ChangeState(new BladeIdleState(blade));
         
         HandleGrabMovement();
-        blade.gameObject.transform.position = new Vector3(blade.gameObject.transform.position.x, bladeYPos, blade.gameObject.transform.position.z);
     }
 
     private void HandleGrabMovement()

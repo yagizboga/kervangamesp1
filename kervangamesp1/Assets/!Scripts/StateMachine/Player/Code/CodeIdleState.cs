@@ -85,7 +85,7 @@ public class CodeIdleState : CodeState
 
     private void CodeGrab()
     {
-        if (BladeGrabManager.Instance.isBladeGrab)
+        if (CodeGrabManager.Instance.isCodeGrab)
         {
             code.ChangeState(new CodeGrabState(code));
         }

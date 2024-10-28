@@ -38,6 +38,7 @@ public class BladeMovingState : BladeState
         }
 
         blade.CheckGround();
+        if (blade.isGrounded) BladeGrabManager.Instance.isBladeRelease = false;
         
         if (blade.isGrounded && Input.GetKey(blade.jumpKey))
         {

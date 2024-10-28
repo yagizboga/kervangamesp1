@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CodeGrabState : CodeState
 {
-    private float codeYPos;
     public CodeGrabState(Code code) : base(code)
     {
 
@@ -13,14 +12,14 @@ public class CodeGrabState : CodeState
     public override void OnStateEnter()
     {
         code.animator.SetBool("iscodeGrab", true);
-        codeYPos = code.gameObject.transform.position.y;
         code.rb.gravityScale = 0;
     }
 
     public override void OnStateExit()
     {
         code.animator.SetBool("iscodeGrab", false);
-        code.rb.gravityScale = 1;
+        CodeGrabManager.Instance.isCodeRelease = true;
+        code.rb.gravityScale = 1.75f;
     }
 
     public override void OnStateFixedUpdate()
@@ -33,7 +32,6 @@ public class CodeGrabState : CodeState
         if (!CodeGrabManager.Instance.isCodeGrab) code.ChangeState(new CodeIdleState(code));
         
         HandleGrabMovement();
-        code.gameObject.transform.position = new Vector3(code.gameObject.transform.position.x, codeYPos, code.gameObject.transform.position.z);
     }
 
     private void HandleGrabMovement()
