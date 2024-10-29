@@ -27,7 +27,7 @@ public class Drone : Enemy
         ChangeState(awakeState);
     }
 
-    void TakeDamage(float damage){
+    void TakeDamage(int damage){
         
     }
 

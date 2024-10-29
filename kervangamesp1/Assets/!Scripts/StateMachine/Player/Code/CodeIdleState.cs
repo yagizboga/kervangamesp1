@@ -29,7 +29,9 @@ public class CodeIdleState : CodeState
 
         CodeAttack();
 
-        CodeHack();
+        CodeDroneControl();
+
+        // CodeHack();
 
         CodeGrab();
     }
@@ -46,7 +48,7 @@ public class CodeIdleState : CodeState
     {
         if (Input.GetMouseButtonDown(0))
         {
-            code.ChangeState(new CodeShootingState(code));   
+            code.ChangeState(new CodeShootingState(code));
         }
     }
 
@@ -80,6 +82,18 @@ public class CodeIdleState : CodeState
                 code._virtualCamera.Priority = 1;
                 code.ChangeState(new CodeUltimateState(code));
             }
+        }
+    }
+
+    private void CodeDroneControl()
+    {
+        if (code._ridableDrone == null) return;
+
+        if (!code._ridableDrone.GetComponent<CodeDroneRidingManager>().isDroneRidable) return;
+
+        if (Input.GetKey(code.hackKey))
+        {
+            code.ChangeState(new CodeDroneRidingState(code));
         }
     }
 

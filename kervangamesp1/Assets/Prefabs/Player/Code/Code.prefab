@@ -71,7 +71,7 @@ MonoBehaviour:
   verticalShootingDir: 0
   isAlive: 1
   _virtualCamera: {fileID: 1736822640829800140}
-  canBeFlippedObj: {fileID: 0}
+  canBeFlippedObj: {fileID: 7627538926810913175}
   jumpKey: 303
   lookUpKey: 273
   moveLeftKey: 276
@@ -312,6 +312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   releaseCoolDown: 3
   isCodeGrab: 0
+  isCodeRelease: 0
 --- !u!1 &7375275545669531121
 GameObject:
   m_ObjectHideFlags: 0

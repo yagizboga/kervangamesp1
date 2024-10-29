@@ -18,6 +18,7 @@ TagManager:
   - Projectile
   - Boss
   - GrabObject
+  - Drone
   layers:
   - Default
   - TransparentFX

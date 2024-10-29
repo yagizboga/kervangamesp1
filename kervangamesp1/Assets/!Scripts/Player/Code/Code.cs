@@ -20,6 +20,7 @@ public class Code : Player
     public List<GameObject> _barrierList;
     public List<GameObject> _stunEnemyList;
     public List<GameObject> _ultimateEnemyList;
+    public GameObject _ridableDrone;
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();
@@ -85,6 +86,11 @@ public class Code : Player
             _ultimateEnemyList.Add(other.gameObject);
         }
 
+        if (other.gameObject.CompareTag("Drone"))
+        {
+            _ridableDrone = other.gameObject;
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D other) {
@@ -106,6 +112,11 @@ public class Code : Player
         if (other.gameObject.CompareTag("Enemy"))
         {
             _ultimateEnemyList.Remove(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Drone"))
+        {
+            _ridableDrone = null;
         }
     }
 
