@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class CodeDroneRidingState : CodeState
 {
@@ -13,13 +15,15 @@ public class CodeDroneRidingState : CodeState
     public override void OnStateEnter()
     {
         Debug.Log("Drone riding entered");
+        code.transform.SetParent(code._ridableDrone.transform, true);
     }
 
     public override void OnStateExit()
     {
         Debug.Log("Drone riding Exited");
-        code._ridableDrone.transform.parent.rotation = Quaternion.Euler(0, 0, 0);
-        droneRb.velocity = new Vector2(0, droneRb.velocity.y);
+        code._ridableDrone.transform.parent.DORotate(new Vector3(0, 0, 0), 0);
+        code.transform.DORotate(new Vector3(0, 0, 0), 0);
+        code.transform.SetParent(code.playerParent.transform, true);  
     }
 
     public override void OnStateFixedUpdate()
@@ -36,22 +40,26 @@ public class CodeDroneRidingState : CodeState
     {
         if (Input.GetKey(code.hackKey) || code._ridableDrone == null) CheckExitStatement();
 
+        Vector3 currentPosition = code._ridableDrone.transform.parent.position;
+
         if (Input.GetKey(code.moveLeftKey))
         {
-            droneRb.velocity = new Vector2(-code.movementSpeed, droneRb.velocity.y);
-            code._ridableDrone.transform.parent.rotation = Quaternion.Euler(0, 0, 15);
+            currentPosition.x -= code.movementSpeed * Time.deltaTime;
+            code._ridableDrone.transform.parent.position = currentPosition;
+            
+            code._ridableDrone.transform.parent.DORotate(new Vector3(0, 0, 15), 0.5f);
         }
 
         else if (Input.GetKey(code.moveRightKey))
         {
-            droneRb.velocity = new Vector2(code.movementSpeed, droneRb.velocity.y);
-            code._ridableDrone.transform.parent.rotation = Quaternion.Euler(0, 0, -15);
+            currentPosition.x += code.movementSpeed * Time.deltaTime;
+            code._ridableDrone.transform.parent.position = currentPosition;
+            code._ridableDrone.transform.parent.DORotate(new Vector3(0, 0, -15), 0.5f);
         }
 
         else
         {
-            droneRb.velocity = new Vector2(0, droneRb.velocity.y);
-            code._ridableDrone.transform.parent.rotation = Quaternion.Euler(0, 0, 0);
+            code._ridableDrone.transform.parent.DORotate(new Vector3(0, 0, 0), 0.5f);
         }
     }
 
