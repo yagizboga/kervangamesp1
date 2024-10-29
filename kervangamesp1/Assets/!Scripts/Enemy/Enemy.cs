@@ -63,6 +63,10 @@ public class Enemy : StateMachine, IDamagable
 
     void DestroyEnemy()
     {
-        Destroy(gameObject);
+        if(!gameObject.CompareTag("KosanAdam")){
+            Destroy(gameObject);
+        }
+        
     }
+
 }

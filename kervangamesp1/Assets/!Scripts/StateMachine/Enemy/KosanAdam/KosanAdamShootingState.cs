@@ -14,14 +14,19 @@ public class KosanAdamShootingState : KosanAdamState
 
     public override void OnStateEnter()
     {
-        Debug.Log("Kosan Adam Shooting State");
         if (!isShooting)
         {
             kosanAdam.StartCoroutine(Shooting());
         }
+        kosanAdam.GetComponent<Animator>().SetBool("Running",true);
     }
 
     public override void OnStateUpdate()
+    {
+       // MoveTowardsBlade();
+    }
+
+    public override void OnStateFixedUpdate()
     {
         MoveTowardsBlade();
     }
