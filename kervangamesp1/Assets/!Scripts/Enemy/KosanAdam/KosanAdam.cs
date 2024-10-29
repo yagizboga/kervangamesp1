@@ -36,10 +36,7 @@ public GameObject SpawnPoint;
         }      
     }
 
-    void TakeDamage(float damage)
-    {
-        
-    }
+   
 
     private void OnTriggerEnter2D(Collider2D other)
     {

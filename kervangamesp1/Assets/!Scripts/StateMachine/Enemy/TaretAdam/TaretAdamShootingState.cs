@@ -32,18 +32,27 @@ public class TaretAdamShootingState : TaretAdamState
     {
 
     }
-    //IEnumerator ShootingCombination(){
-    //    BulletCombinationChoice = Random.Range(1,4);
-    //    yield return new WaitForSeconds(10f);
-   // }
     public IEnumerator Shooting(){
+        
         while(true){
-            
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition1.position,taretAdam.BulletPosition1.rotation,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition3.position,taretAdam.BulletPosition3.rotation,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition2.rotation,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition2.rotation,1.5f);
-            yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition2.rotation,1.5f);
+            int a = Random.Range(1,4);
+            if(a ==1){
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition1.position,taretAdam.BulletPosition1.rotation,0f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.OrangeBullet,taretAdam.BulletPosition3.position,taretAdam.BulletPosition1.rotation,1f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition3.position,taretAdam.BulletPosition1.rotation,0f);
+            }
+            else if(a ==2){
+                yield return bulletSpawner.SpawnBullet(taretAdam.OrangeBullet,taretAdam.BulletPosition1.position,taretAdam.BulletPosition1.rotation,0f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition1.rotation,0f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlackBullet,taretAdam.BulletPosition3.position,taretAdam.BulletPosition1.rotation,0f);
+            }
+            else if(a ==3){
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition1.rotation,0.5f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition1.rotation,0.5f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition1.rotation,0.5f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition1.rotation,0.5f);
+                yield return bulletSpawner.SpawnBullet(taretAdam.BlueBullet,taretAdam.BulletPosition2.position,taretAdam.BulletPosition1.rotation,0.5f);
+            }
         }
     }
 }

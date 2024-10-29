@@ -174,11 +174,72 @@ PrefabInstance:
       propertyPath: m_Name
       value: AgirKalkan
       objectReference: {fileID: 0}
+    - target: {fileID: 6809257477979136494, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+--- !u!1001 &475697163
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 629340737165087709, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_Name
+      value: TaretAdam (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2797066479528176321, guid: 40bad6edc63629745b436338811f38f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 40bad6edc63629745b436338811f38f3, type: 3}
 --- !u!1 &562034246
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,6 +363,10 @@ PrefabInstance:
     - target: {fileID: 6809257477979136494, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
       propertyPath: m_Name
       value: AgirKalkan (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6809257477979136494, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1590,6 +1655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AgirKalkan (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6809257477979136494, guid: 8005d75eff0937d4db9da503c0a50181, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1839,3 +1908,4 @@ SceneRoots:
   - {fileID: 1721496706}
   - {fileID: 1294739428}
   - {fileID: 562034248}
+  - {fileID: 475697163}

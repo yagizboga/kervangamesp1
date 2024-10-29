@@ -13,6 +13,8 @@ public class Drone : Enemy
     public Transform BulletSpawnTransform;
     GameObject Blade;
     GameObject Code;
+    public bool isShooting = false;
+    public bool triggerarea = false;
 
     private void Awake(){
         awakeState = new DroneAwakeState(this);
@@ -27,18 +29,24 @@ public class Drone : Enemy
         ChangeState(awakeState);
     }
 
+    public void Update(){
+        if(isShooting){
+            gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Assets/Assets/Enemy/Drone/BOMBER DRONE/IMG_0668.PNG") as Sprite;
+        }
+        else{
+            gameObject.GetComponent<SpriteRenderer>().sprite = Resources.Load("Assets/Assets/Enemy/Drone/BOMBER DRONE/IMG_0667.PNG") as Sprite;
+        }
+        if(CurrentState==awakeState && triggerarea){
+            ChangeState(shootingState);
+        }
+    }
+
     void TakeDamage(int damage){
         
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Blade") || other.CompareTag("Code"))
-        {
-            if (CurrentState == awakeState)
-            {
-                ChangeState(shootingState);
-            }
-        }
+
+    public void canShoot(){
+        isShooting = true;
     }
 }

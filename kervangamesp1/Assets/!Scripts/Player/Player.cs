@@ -40,7 +40,7 @@ public class Player : StateMachine, IDamagable
         if (isAlive)
         {
             Debug.Log("Can: " + health);
-            StartCoroutine(SlowDownTime());
+           // StartCoroutine(SlowDownTime());
             health -= damage;
 
             if (health <= 0)

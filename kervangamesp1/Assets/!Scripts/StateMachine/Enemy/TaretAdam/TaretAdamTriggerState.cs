@@ -18,7 +18,7 @@ public class TaretAdamTriggerState : TaretAdamState
 
     }
     public override void OnStateFixedUpdate(){
-        if((taretAdam.transform.position.y - enterpos.y) <= 3){
+        if((taretAdam.transform.position.y - enterpos.y) <= 1.5f){
             taretAdam.transform.position += new Vector3(0,Time.deltaTime*taretAdam.RiseSpeed,0);
         }
         else{

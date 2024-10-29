@@ -29,4 +29,9 @@ public class AgirKalkan : Enemy
             transform.Find("DetectionArea").GetComponent<BoxCollider2D>().enabled = false;
         }
     }
+
+
+    public void TakeDamage(float a){
+
+    }
 }

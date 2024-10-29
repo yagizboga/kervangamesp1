@@ -33,16 +33,12 @@ public class TaretAdam : Enemy
     void Update(){
         if(TriggerEntered){
             ChangeState(triggerState);
-            transform.GetChild(4).GetComponent<TaretAdamTrigger>().enabled = false;
+            transform.GetChild(3).GetComponent<TaretAdamTrigger>().enabled = false;
             TriggerEntered = false;
         }
     }
 
-    void TakeDamage(float damage){
-        
-    }
-
-
+  
 
 
 

@@ -7,40 +7,32 @@ public class DroneShootingState : DroneState
     Drone Drone;
     float DroneSpeed = 3f;
     int CharacterChoice;
-    int BulletChoice;
-    EnemyBulletSpawner BulletSpawner;
     public DroneShootingState(Drone Drone):base(Drone){
         this.Drone = Drone;
     }
     public override void OnStateEnter(){
-        BulletSpawner = drone.GetComponent<EnemyBulletSpawner>();
-        Debug.Log("shooting");
         CharacterChoice = Random.Range(1,3);
         if(CharacterChoice == 1){
-            BulletSpawner.StartEnemyCoroutine(TrackPlayer(drone.BladeTransform));
+            drone.StartCoroutine(TrackPlayer(drone.BladeTransform));
         }
         else if(CharacterChoice == 2){
-            BulletSpawner.StartEnemyCoroutine(TrackPlayer(drone.CodeTransform));
+            drone.StartCoroutine(TrackPlayer(drone.CodeTransform));
         }
-        BulletSpawner.StartEnemyCoroutine(DropBomb());
+
+        drone.StartCoroutine(dronAnim());
     }
-    public override void OnStateUpdate(){}
-    public override void OnStateFixedUpdate(){}
+    public override void OnStateUpdate(){
+    }
+
+
+    public override void OnStateFixedUpdate(){
+        if(drone.isShooting){
+            GameObject.Instantiate(bulletchoice(),drone.BulletSpawnTransform.position,drone.BulletSpawnTransform.rotation);
+            drone.isShooting =false;
+        }
+    }
     public override void OnStateExit(){}
 
-    public IEnumerator DropBomb(){
-        yield return new WaitForSeconds(6f);
-        while(true){
-            BulletChoice = Random.Range(1,3);
-            if(BulletChoice == 1){
-                yield return BulletSpawner.SpawnBullet(drone.BlueBullet,drone.BulletSpawnTransform.position,drone.BulletSpawnTransform.rotation,6f);
-            }
-            else if(BulletChoice == 2){
-                yield return BulletSpawner.SpawnBullet(drone.OrangeBullet,drone.BulletSpawnTransform.position,drone.BulletSpawnTransform.rotation,6f);
-            }
-        }
-
-    }
     public IEnumerator TrackPlayer(Transform CharacterTransform){
         while(true){
         float NewPositionX = Mathf.Lerp(drone.transform.position.x,CharacterTransform.position.x,DroneSpeed*Time.deltaTime);
@@ -50,6 +42,24 @@ public class DroneShootingState : DroneState
         }
         yield return null;
         }
+    }
+
+    public IEnumerator dronAnim(){
+        while(true){
+            yield return new WaitForSeconds(5f);
+            drone.GetComponent<Animator>().Play("Base Layer.Shooting",default,0f);
+            Debug.Log("Shoot");
+        }
+        
+        
+    }
+
+    GameObject bulletchoice(){
+        int bulletc = Random.Range(1,3);
+        if(bulletc ==1){
+            return drone.BlueBullet;
+        }
+        return drone.OrangeBullet; 
     }
 
 
