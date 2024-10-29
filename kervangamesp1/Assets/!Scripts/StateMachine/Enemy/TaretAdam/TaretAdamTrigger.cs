@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class TaretAdamTrigger : MonoBehaviour
 {
-    TaretAdam taretAdamscript;
-
-    void Start(){
-        taretAdamscript = GetComponentInParent<TaretAdam>();
-    }
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Blade") || other.CompareTag("Code")){
-            taretAdamscript.TriggerEntered = true;
+            gameObject.transform.parent.GetComponent<TaretAdam>().TriggerEntered = true;
         }
     }
 }

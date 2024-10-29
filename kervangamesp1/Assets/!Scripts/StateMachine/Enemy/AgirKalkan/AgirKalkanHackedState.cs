@@ -10,7 +10,9 @@ public class AgirKalkanHackedState : AgirKalkanState
         this.AgirKalkan = AgirKalkan;
     }
     public override void OnStateEnter(){
-        agirKalkan.Bluelight.GetComponent<SpriteRenderer>().enabled = true;
+        agirKalkan.GetComponent<BoxCollider2D>().enabled = true;
+
+        agirKalkan.GetComponent<Animator>().SetBool("HackedBool",true);
     }
     public override void OnStateUpdate(){}
     public override void OnStateFixedUpdate(){}

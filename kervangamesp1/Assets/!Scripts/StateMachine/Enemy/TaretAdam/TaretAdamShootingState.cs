@@ -8,6 +8,10 @@ public class TaretAdamShootingState : TaretAdamState
     public TaretAdam TaretAdam;
     EnemyBulletSpawner bulletSpawner;
     int BulletCombinationChoice = 1;
+
+    List<GameObject> order1 = new List<GameObject>{};
+    List<GameObject> order2 = new List<GameObject>{};
+    List<GameObject> order3 = new List<GameObject>{};
     public TaretAdamShootingState(TaretAdam TaretAdam):base(TaretAdam){
         this.TaretAdam = TaretAdam;
         bulletSpawner = taretAdam.GetComponent<EnemyBulletSpawner>();
@@ -15,17 +19,22 @@ public class TaretAdamShootingState : TaretAdamState
 
     public override void OnStateEnter()
     {
-        Debug.Log("Shooting State");
         bulletSpawner.StartEnemyCoroutine(Shooting());
+        order1 = new List<GameObject>{taretAdam.BlackBullet,taretAdam.OrangeBullet,taretAdam.BlueBullet};
+        order2 = new List<GameObject>{taretAdam.OrangeBullet,taretAdam.BlueBullet,taretAdam.BlackBullet};
+        order3 = new List<GameObject>{taretAdam.BlueBullet,taretAdam.BlueBullet,taretAdam.BlueBullet,taretAdam.BlueBullet,taretAdam.BlueBullet};
     }
 
     public override void OnStateUpdate()
     {
+        
     }
 
     public override void OnStateFixedUpdate()
     {
-
+        if(taretAdam.CanShoot){
+            taretAdam.CanShoot = false;
+        }
     }
 
     public override void OnStateExit()
@@ -55,6 +64,8 @@ public class TaretAdamShootingState : TaretAdamState
             }
         }
     }
+
+    void 
 }
 
 

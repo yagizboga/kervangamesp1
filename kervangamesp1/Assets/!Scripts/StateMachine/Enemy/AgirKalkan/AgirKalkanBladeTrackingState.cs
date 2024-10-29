@@ -12,6 +12,7 @@ public class AgirKalkanBladeTrackingState : AgirKalkanState
     Transform BladeTransform;
     public override void OnStateEnter(){
         BladeTransform = GameObject.FindGameObjectWithTag("Blade").transform;
+        agirKalkan.GetComponent<Animator>().SetBool("TriggerAreaBool",true);
     }
     public override void OnStateUpdate(){
         

@@ -19,6 +19,8 @@ TagManager:
   - Boss
   - GrabObject
   - Drone
+  - KosanAdam
+  - HavanTopcusu
   layers:
   - Default
   - TransparentFX

@@ -10,9 +10,13 @@ public class AgirKalkan : Enemy
     public GameObject Bluelight;
     public AgirKalkanAwakeState awakeState;
     public AgirKalkanBladeTrackingState bladeTrackingState;
+    public AgirKalkanDeathState deathState;
+    public GameObject BrokenParts;
+
 
     void Awake(){
         bladeTrackingState = new AgirKalkanBladeTrackingState(this);
+        deathState = new AgirKalkanDeathState(this);
     }
     void Start()
     {
@@ -23,15 +27,15 @@ public class AgirKalkan : Enemy
     // Update is called once per frame
     void Update()
     {
-        if(DetectionAreaBool){
+        if(DetectionAreaBool && CurrentState == awakeState){
             ChangeState(bladeTrackingState);
             DetectionAreaBool = false;
             transform.Find("DetectionArea").GetComponent<BoxCollider2D>().enabled = false;
         }
+        if(Health <= 0){
+            ChangeState(deathState);
+        }
     }
 
 
-    public void TakeDamage(float a){
-
-    }
 }

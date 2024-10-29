@@ -26,8 +26,7 @@ public class HavanTopcusuShootingState : HavanTopcusuState
 
     public override void OnStateFixedUpdate()
     {
-        Debug.Log(BladeProjectiles.Count+" "+CodeProjectiles.Count);
-        Debug.Log(havanTopcusu.canShootBlade+" "+havanTopcusu.canShootCode);
+
 
         if(BladeProjectiles.Count == 0){
             BladeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.BlackBullet,havanTopcusu.BlueBullet};
@@ -36,8 +35,6 @@ public class HavanTopcusuShootingState : HavanTopcusuState
             CodeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.OrangeBullet,havanTopcusu.OrangeBullet};
         }
         if(havanTopcusu.canShootBlade || havanTopcusu.canShootCode){
-            Debug.Log(havanTopcusu.canShootBlade);
-            Debug.Log(havanTopcusu.canShootCode);
             GameObject.Instantiate(NextBullet(),havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation);
             havanTopcusu.canShootBlade = false;
             havanTopcusu.canShootCode = false;
