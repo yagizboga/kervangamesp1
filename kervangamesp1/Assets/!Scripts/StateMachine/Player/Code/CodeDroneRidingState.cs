@@ -16,6 +16,7 @@ public class CodeDroneRidingState : CodeState
     {
         Debug.Log("Drone riding entered");
         code.transform.SetParent(code._ridableDrone.transform, true);
+        code._ridableDrone.transform.parent.GetComponent<DroneShootingState>().OnStateExit();
     }
 
     public override void OnStateExit()
@@ -42,12 +43,24 @@ public class CodeDroneRidingState : CodeState
 
         Vector3 currentPosition = code._ridableDrone.transform.parent.position;
 
+        if (Input.GetKey(code.jumpKey))
+        {
+            currentPosition.y += code.movementSpeed * Time.deltaTime;
+            code._ridableDrone.transform.parent.position = currentPosition;
+        }
+
+        if (Input.GetKey(code.crouchKey))
+        {
+            currentPosition.y -= code.movementSpeed * Time.deltaTime;
+            code._ridableDrone.transform.parent.position = currentPosition;
+        }
+
         if (Input.GetKey(code.moveLeftKey))
         {
             currentPosition.x -= code.movementSpeed * Time.deltaTime;
             code._ridableDrone.transform.parent.position = currentPosition;
-            
             code._ridableDrone.transform.parent.DORotate(new Vector3(0, 0, 15), 0.5f);
+            code.spriteRenderer.flipX = true;
         }
 
         else if (Input.GetKey(code.moveRightKey))
@@ -55,6 +68,7 @@ public class CodeDroneRidingState : CodeState
             currentPosition.x += code.movementSpeed * Time.deltaTime;
             code._ridableDrone.transform.parent.position = currentPosition;
             code._ridableDrone.transform.parent.DORotate(new Vector3(0, 0, -15), 0.5f);
+            code.spriteRenderer.flipX = false;
         }
 
         else
