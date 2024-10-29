@@ -11,6 +11,9 @@ public class BladeGrabState : BladeState
     public override void OnStateEnter()
     {
         blade.animator.SetBool("isBladeGrab", true);
+
+        if (BladeGrabManager.Instance.isDrone) blade.transform.SetParent(blade._ridableDrone.transform, true);
+
         blade.rb.gravityScale = 0;
     }
 
@@ -18,6 +21,7 @@ public class BladeGrabState : BladeState
     {
         blade.animator.SetBool("isBladeGrab", false);
         BladeGrabManager.Instance.isBladeRelease = true;
+        if (BladeGrabManager.Instance.isDrone) blade.transform.SetParent(blade.playerParent.transform, true);
         blade.rb.gravityScale = 1.75f;
     }
 

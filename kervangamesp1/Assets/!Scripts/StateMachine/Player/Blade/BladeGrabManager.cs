@@ -8,6 +8,7 @@ public class BladeGrabManager : MonoBehaviour
     public static BladeGrabManager Instance;
     public bool isBladeGrab = false;
     public bool isBladeRelease = false;
+    public bool isDrone = false;
     private float timer = 0;
     private void Awake()
     {
@@ -40,7 +41,13 @@ public class BladeGrabManager : MonoBehaviour
         if (other.gameObject.CompareTag("GrabObject"))
         {
             isBladeGrab = true;
-        }    
+        }
+
+        if (other.gameObject.CompareTag("Drone"))
+        {
+            isBladeGrab = true;
+            isDrone = true;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other) 
@@ -49,5 +56,11 @@ public class BladeGrabManager : MonoBehaviour
         {
             isBladeGrab = false;    
         }    
+
+        if (other.gameObject.CompareTag("Drone"))
+        {
+            isBladeGrab = false;
+            isDrone = false;
+        }
     }
 }
