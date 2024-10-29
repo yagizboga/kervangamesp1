@@ -20,7 +20,6 @@ public class Code : Player
     public List<GameObject> _barrierList;
     public List<GameObject> _stunEnemyList;
     public List<GameObject> _ultimateEnemyList;
-    public GameObject _ridableDrone;
     private void Awake() 
     {
         rb = GetComponent<Rigidbody2D>();

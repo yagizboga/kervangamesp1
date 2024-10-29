@@ -31,6 +31,7 @@ public class Player : StateMachine, IDamagable
     public CinemachineVirtualCamera _virtualCamera;
     public GameObject canBeFlippedObj;
     public GameObject playerParent;
+    public GameObject _ridableDrone;
 
     public void CheckGround() {
         isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1, 0.5f), CapsuleDirection2D.Horizontal, 0, groundLayer);

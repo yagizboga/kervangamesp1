@@ -77,6 +77,11 @@ public class Blade : Player
         {
             bossEnemy = other.gameObject;
         }
+
+        if (other.gameObject.CompareTag("Drone"))
+        {
+            _ridableDrone = other.gameObject;
+        }
         
     }
 
@@ -90,6 +95,11 @@ public class Blade : Player
         if (other.gameObject.CompareTag("Boss"))
         {
             bossEnemy = null;
+        }
+
+        if (other.gameObject.CompareTag("Drone"))
+        {
+            _ridableDrone = null;
         }
     }
 }
