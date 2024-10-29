@@ -7,25 +7,27 @@ public class HavanTopcusu : Enemy
     private HavanTopcusuAwakeState awakeState;
     public Rigidbody2D rb;
     private HavanTopcusuShootingState shootingState;
+    private HavanTopcusuDeathState deathState;
     public Transform BulletPosition;
     public GameObject BlackBullet;
     public GameObject BlueBullet;
     public GameObject OrangeBullet;
     public EnemyBulletSpawner bulletSpawner;
     public GameObject Bullet;
+    public bool TriggerArea = false;
 
     public List<GameObject> BladeProjectiles;
     public List<GameObject> CodeProjectiles;
-    public int bulletcounter = 0;
-    public int bulletOrder = 0;
 
+    public bool canShootCode = false;
+    public bool canShootBlade = false;
    
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
         awakeState = new HavanTopcusuAwakeState(this);
         shootingState = new HavanTopcusuShootingState(this);
-        bulletSpawner = new EnemyBulletSpawner();
+        deathState = new HavanTopcusuDeathState(this);
     }
 
     void Start(){
@@ -40,19 +42,7 @@ public class HavanTopcusu : Enemy
     }
 
     public void Update(){
-        if(bulletOrder%2==0){
-            Bullet = BladeProjectiles[Random.Range(0,BladeProjectiles.Count)];
-        }
-        if(bulletOrder%2!=0){
-            Bullet = CodeProjectiles[Random.Range(0,BladeProjectiles.Count)];
-        }
-    }
-    
-
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Blade")|| other.CompareTag("Code"))
+        if (TriggerArea)
         {
             if (CurrentState == awakeState)
             {
@@ -60,12 +50,23 @@ public class HavanTopcusu : Enemy
                 GetComponent<Animator>().SetBool("isShooting",true);
             }
         }
+        if(Health<= 0){
+            ChangeState(deathState);
+        }
     }
+    
 
-    public void Shoot(){
-        bulletSpawner.Spawn(Bullet,BulletPosition.position,BulletPosition.rotation);
-        bulletcounter++;
-        bulletOrder++;
+
+   
+
+    public void ShootCode(){
+        canShootCode =true;
+    }
+    public void ShootBlade(){
+        canShootBlade = true;
+    }   
+    void DestroyHavanTopcusu(){
+        Destroy(gameObject);
     }
 
     

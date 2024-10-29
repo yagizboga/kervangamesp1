@@ -11,7 +11,7 @@ public class EnemyState : State
 
     public virtual void OnStateEnter()
     {
-
+    
     }
 
     public virtual void OnStateExit()

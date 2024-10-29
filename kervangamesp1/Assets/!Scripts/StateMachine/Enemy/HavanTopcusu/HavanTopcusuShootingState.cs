@@ -6,9 +6,12 @@ using UnityEngine;
 public class HavanTopcusuShootingState : HavanTopcusuState
 {
     public HavanTopcusu Havantopcusu;
-    int BulletOrder;
 
-    EnemyBulletSpawner bulletSpawner;
+
+
+    List<GameObject> BladeProjectiles = new List<GameObject>{};
+    List<GameObject> CodeProjectiles = new List<GameObject>{};
+    int randomint;
 
     
 
@@ -18,17 +21,31 @@ public class HavanTopcusuShootingState : HavanTopcusuState
 
     public override void OnStateEnter()
     {
-        bulletSpawner = havanTopcusu.GetComponent<EnemyBulletSpawner>();
-        bulletSpawner.StartEnemyCoroutine(Shooting());
-        
-    }
-
-    public override void OnStateUpdate()
-    {
 
     }
 
     public override void OnStateFixedUpdate()
+    {
+        Debug.Log(BladeProjectiles.Count+" "+CodeProjectiles.Count);
+        Debug.Log(havanTopcusu.canShootBlade+" "+havanTopcusu.canShootCode);
+
+        if(BladeProjectiles.Count == 0){
+            BladeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.BlackBullet,havanTopcusu.BlueBullet};
+        }
+        if(CodeProjectiles.Count == 0){
+            CodeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.OrangeBullet,havanTopcusu.OrangeBullet};
+        }
+        if(havanTopcusu.canShootBlade || havanTopcusu.canShootCode){
+            Debug.Log(havanTopcusu.canShootBlade);
+            Debug.Log(havanTopcusu.canShootCode);
+            GameObject.Instantiate(NextBullet(),havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation);
+            havanTopcusu.canShootBlade = false;
+            havanTopcusu.canShootCode = false;
+        }
+
+    }
+
+    public override void OnStateUpdate()
     {
     }
 
@@ -37,30 +54,18 @@ public class HavanTopcusuShootingState : HavanTopcusuState
 
     }
 
-    public IEnumerator Shooting(){
-        yield return new WaitForSeconds(1);
-        while(true){
-            //BladeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.BlackBullet,havanTopcusu.BlueBullet};
-            //CodeProjectiles = new List<GameObject>{havanTopcusu.BlackBullet,havanTopcusu.OrangeBullet,havanTopcusu.OrangeBullet};
-            for(int i=0;i<3;i++){
-                BulletOrder = UnityEngine.Random.Range(0,3-i);
-               // BladeProjectiles[BulletOrder].GetComponent<HavanTopcusuBullet>().bladebool = true;
-                
-                 //   yield return bulletSpawner.SpawnBullet(BladeProjectiles[BulletOrder],havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,2f);
-                
-              //  BladeProjectiles.RemoveAt(BulletOrder);
-               
-               
-               
-                BulletOrder = UnityEngine.Random.Range(0,3-i);
-             //   CodeProjectiles[BulletOrder].GetComponent<HavanTopcusuBullet>().bladebool = false;
-              //      yield return bulletSpawner.SpawnBullet(CodeProjectiles[BulletOrder],havanTopcusu.BulletPosition.position,havanTopcusu.BulletPosition.rotation,2f);
+    GameObject NextBullet(){
+        randomint = UnityEngine.Random.Range(0,3);
+        if(havanTopcusu.canShootBlade){
+            BladeProjectiles[randomint].GetComponent<HavanTopcusuBullet>().bladebool = true;
+            return BladeProjectiles[randomint];
 
-                
-              //  CodeProjectiles.RemoveAt(BulletOrder);
-
-            }     
         }
+        if(havanTopcusu.canShootCode){
+            CodeProjectiles[randomint].GetComponent<HavanTopcusuBullet>().bladebool = false;
+            return CodeProjectiles[randomint];
+        }
+        return null;
     }
 
 }
