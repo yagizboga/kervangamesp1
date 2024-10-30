@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class TaretAdamTrigger : MonoBehaviour
 {
+    public GameObject Turret;
     void OnTriggerEnter2D(Collider2D other){
         if(other.CompareTag("Blade") || other.CompareTag("Code")){
-            gameObject.transform.parent.GetComponent<TaretAdam>().TriggerEntered = true;
+            Turret.GetComponent<TaretAdam>().TriggerEntered = true;
         }
     }
 }
